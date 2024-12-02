@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Important pages
+Allow: /index.html
+
+# Sitemaps
+Sitemap: https://dogtranslator.org/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Host
+Host: dogtranslator.org
+
+# Clean Parameters
+*?*utm_source=*
+*?*utm_medium=*
+*?*utm_campaign=*
+*?*utm_content=*
+*?*utm_term=*
+*?*fbclid=*
+*?*gclid=*
+
+# Cache Control
+Cache-Control: max-age=3600
