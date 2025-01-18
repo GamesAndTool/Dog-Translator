@@ -42,20 +42,22 @@
     <main class="pt-20">
         <!-- Hero Section -->
         <section id="translator" class="container mx-auto px-4 py-16 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold text-blue-600 mb-6">Dog Translator</h1>
-            <p class="text-2xl text-gray-600 mb-8">Break the Language Barrier Between You and Your Dog</p>
-            <div class="max-w-3xl mx-auto text-left mb-12">
-                <p class="text-xl text-gray-700 mb-6">Understand your furry friend better with our AI-powered dog translator. Convert human speech to dog language and interpret your dog's barks, growls, and whines. Build a stronger bond with your pet through better communication.</p>
-                <div class="flex justify-center gap-4">
-                    <button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">Start Translating</button>
-                    <button class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors">How It Works →</button>
+            <div class="sr-only">
+                <h1 class="text-5xl md:text-6xl font-bold text-blue-600 mb-6">Dog Translator</h1>
+                <p class="text-2xl text-gray-600 mb-8">Break the Language Barrier Between You and Your Dog</p>
+                <div class="max-w-3xl mx-auto text-left mb-12">
+                    <p class="text-xl text-gray-700 mb-6">Understand your furry friend better with our AI-powered dog translator. Convert human speech to dog language and interpret your dog's barks, growls, and whines. Build a stronger bond with your pet through better communication.</p>
+                    <div class="flex justify-center gap-4">
+                        <button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">Start Translating</button>
+                        <button class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors">How It Works →</button>
+                    </div>
                 </div>
             </div>
 
             <!-- Translator Interface -->
             <div class="bg-white rounded-xl shadow-lg p-8 max-w-5xl mx-auto">
-                <h2 class="text-2xl font-bold mb-6">Human to Dog Translator</h2>
-                <p class="text-gray-600 mb-8">Convert your words into dog language</p>
+                <h2 class="text-2xl font-bold mb-6">Dog Behavior Translator</h2>
+                <p class="text-gray-600 mb-8">Understand what your dog is trying to tell you</p>
                 
                 <div class="max-w-2xl mx-auto">
                     <div class="mb-6">
@@ -63,23 +65,106 @@
                             id="human-text" 
                             class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                             rows="4"
-                            placeholder="Enter your text to translate into dog language..."
+                            placeholder="Describe your dog's behavior or select from common behaviors below"
                         ></textarea>
+                    </div>
+                    
+                    <!-- Quick Select Behaviors -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">Common Behaviors:</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- Tail Behaviors -->
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Wagging tail rapidly
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Wagging tail slowly
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Tail between legs
+                            </button>
+                            
+                            <!-- Body Language -->
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Lowering front body
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Rolling on back
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Stretching front legs
+                            </button>
+                            
+                            <!-- Face/Head Expressions -->
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Ears pulled back
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Ears pointing forward
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Tilting head
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Licking lips
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Yawning repeatedly
+                            </button>
+                            
+                            <!-- Interactive Behaviors -->
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Bringing toys repeatedly
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Pawing at me
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Following me everywhere
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Leaning against me
+                            </button>
+                            
+                            <!-- Stress Signals -->
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Showing teeth
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Pacing back and forth
+                            </button>
+                            <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                Excessive drooling
+                            </button>
+                        </div>
                     </div>
                     
                     <button 
                         id="translate-button"
                         class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors mb-6"
                     >
-                        Translate to Dog
+                        Interpret Behavior
                     </button>
                     
                     <div id="translation-result" class="hidden">
                         <div class="p-4 bg-gray-50 rounded-lg mb-4">
-                            <h3 class="font-semibold mb-2">Dog Translation:</h3>
+                            <h3 class="font-semibold mb-2">Your dog might be saying:</h3>
                             <p id="translated-text" class="text-lg"></p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-5xl mx-auto mt-8">
+                <div class="relative" style="height: 800px; overflow: hidden;">
+                    <iframe 
+                        src="https://anythingtranslate.com/translators/dog-language-translator/"
+                        class="absolute w-full border-0"
+                        title="Dog Language Translator"
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin allow-forms"
+                        style="top: -120px; height: calc(100% + 120px);"
+                    ></iframe>
                 </div>
             </div>
         </section>
