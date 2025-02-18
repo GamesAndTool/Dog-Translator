@@ -6,67 +6,119 @@ const behaviorPatterns = {
         'wagging rapidly': 'I\'m super excited and happy! This is pure joy!',
         'wagging slowly': 'I\'m friendly and calm, feeling content',
         'low': 'I\'m being submissive or feeling uncertain',
-        'high': 'I\'m alert and confident, maybe a bit aroused'
+        'high': 'I\'m alert and confident, maybe a bit aroused',
+        'stiff': 'I\'m feeling tense or alerting to potential danger',
+        'curved like question mark': 'I\'m feeling playful and friendly!',
+        'tucked': 'I\'m very nervous or scared right now'
     },
     
     // Body postures
     'lowering': {
         'front body': 'I want to play! This is my play bow - let\'s have fun!',
         'head': 'I\'m being submissive or friendly, showing I\'m not a threat',
-        'body': 'I\'m feeling submissive or scared, trying to appear smaller'
+        'body': 'I\'m feeling submissive or scared, trying to appear smaller',
+        'shoulders': 'I\'m trying to appear less threatening',
+        'rear': 'I\'m getting ready to pounce or play!'
     },
     
     'rolling': {
         'back': 'I trust you completely and feel safe! Maybe a belly rub?',
-        'ground': 'I\'m marking my scent or just feeling really comfortable'
+        'ground': 'I\'m marking my scent or just feeling really comfortable',
+        'side': 'I\'m relaxed and comfortable around you',
+        'grass': 'I\'m enjoying myself and marking my scent!'
     },
     
     'stretching': {
         'front legs': 'I\'m inviting you to play! Also called a play bow',
-        'body': 'I\'m relaxed and comfortable, or just woke up'
+        'body': 'I\'m relaxed and comfortable, or just woke up',
+        'back legs': 'I\'m getting ready for activity or just feeling good',
+        'neck': 'I\'m trying to release tension or get comfortable'
     },
     
     // Face expressions
     'ears': {
         'forward': 'I\'m alert and very interested in something',
         'back': 'I\'m being friendly or submissive, no threat here',
-        'flat': 'I\'m scared or nervous about something'
+        'flat': 'I\'m scared or nervous about something',
+        'twitching': 'I\'m trying to locate a sound or staying alert',
+        'one up one down': 'I\'m a bit confused or trying to figure something out',
+        'relaxed': 'I\'m feeling calm and comfortable'
     },
     
     'tilting head': 'I\'m trying to understand better or hear something clearly',
     'licking lips': 'I\'m feeling nervous or trying to show I\'m peaceful',
     'yawning': 'I\'m feeling stressed or trying to calm myself down',
     
+    'squinting': 'I\'m feeling content or showing affection',
+    'blinking slowly': 'I\'m relaxed and showing you I\'m comfortable',
+    'nose wrinkling': 'I\'m giving a warning signal or smelling something interesting',
+    'showing whites of eyes': 'I\'m feeling stressed or uncomfortable',
+    
     // Interactive behaviors
     'bringing': {
         'toys': 'I want to play with you! Let\'s have fun together!',
-        'items': 'I want your attention or trying to show you something'
+        'items': 'I want your attention or trying to show you something',
+        'shoes': 'I want to go for a walk or missing you',
+        'food bowl': 'I\'m hungry or it\'s my usual meal time!',
+        'leash': 'I really want to go for a walk!'
     },
     
     'pawing': 'I want attention or something specific from you',
     'following': 'I love you and want to be near you, or I need something',
     'leaning': 'I trust you and want physical contact, feeling affectionate',
     
+    'nudging': 'I\'m trying to get your attention or guide you somewhere',
+    'hiding': 'I\'m scared or not feeling well',
+    'sitting on feet': 'I\'m claiming you as mine and seeking security',
+    'jumping up': 'I\'m very excited to see you or want attention',
+    
     // Stress signals
     'showing teeth': 'I\'m feeling threatened, please give me space',
     'pacing': 'I\'m anxious or need something urgently',
     'drooling': 'I might be stressed, or just smelling something tasty',
     
+    'shaking off': 'I\'m trying to release tension or stress',
+    'excessive scratching': 'I\'m feeling anxious or uncomfortable',
+    'whale eye': 'I\'m feeling very uncomfortable or stressed',
+    'freezing': 'I\'m very tense and might be about to react',
+    
     // Additional behaviors
     'circling': {
         'before lying': 'I\'m making my spot comfortable, ancient instinct',
-        'repeatedly': 'I might be excited or anxious about something'
+        'repeatedly': 'I might be excited or anxious about something',
+        'chasing tail': 'I\'m playing or might be anxious about something',
+        'around you': 'I\'m excited or trying to get your attention'
     },
     
     'digging': {
         'ground': 'I\'m following my instinct or hiding something',
-        'blankets': 'I\'m making a comfortable spot or playing'
+        'blankets': 'I\'m making a comfortable spot or playing',
+        'couch': 'I\'m trying to make a cozy nest or feeling anxious',
+        'after pooping': 'I\'m marking my territory and covering my scent'
     },
     
     'barking': {
         'short': 'Hey! Pay attention to this!',
         'continuous': 'I\'m really excited or concerned about something',
-        'howling': 'I\'m communicating with others or responding to sounds'
+        'howling': 'I\'m communicating with others or responding to sounds',
+        'whimpering': 'I\'m feeling anxious or need comfort',
+        'growling playfully': 'I\'m having fun and not being aggressive!',
+        'bay': 'I\'m tracking something or alerting to a discovery',
+        'grumbling': 'I\'m content but want you to know I\'m here'
+    },
+    
+    'sleeping': {
+        'on back': 'I feel completely safe and secure',
+        'curled up': 'I\'m conserving warmth or feeling protective',
+        'spread out': 'I\'m trying to cool down and totally relaxed',
+        'twitching': 'I\'m probably dreaming about running or playing!'
+    },
+    
+    'sniffing': {
+        'ground intensely': 'I\'m reading interesting messages from other dogs',
+        'air': 'I\'ve caught an interesting scent and gathering information',
+        'your face': 'I\'m greeting you and checking your mood',
+        'other dogs': 'I\'m gathering social information and saying hello'
     }
 };
 
