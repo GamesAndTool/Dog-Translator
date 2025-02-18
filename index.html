@@ -14,27 +14,18 @@
 <body class="bg-gray-50">
     <header class="fixed top-0 w-full bg-white shadow-md z-50">
         <nav class="container mx-auto px-4 py-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="logo">
-                    <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center">
-                        <span class="mr-2">🐕</span>
-                        Dog Translator
-                    </a>
-                </div>
-                <nav id="mobile-menu" class="hidden md:block w-full md:w-auto">
-                    <ul class="flex space-x-6 mt-4 md:mt-0">
-                        <li><a href="index.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">Home</a></li>
-                        <!-- <li><a href="translate.html" class="text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-600 transition-colors">Translate</a></li>
-                        <li><a href="dictionary.html" class="text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-600 transition-colors">Dictionary</a></li>
-                        <li><a href="training.html" class="text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-600 transition-colors">Training</a></li>
-                        <li><a href="help.html" class="text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-600 transition-colors">Help</a></li> -->
-                    </ul>
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center">
+                    <span class="mr-2">🐕</span>
+                    Dog Translator
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">Behavior Translator</a>
+                    <a href="translate.html" class="text-gray-600 hover:text-blue-600">Voice Translator</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">How It Works</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600">FAQ</a>
                 </nav>
-                <button id="mobile-menu-button" class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
             </div>
         </nav>
     </header>
@@ -247,6 +238,180 @@
                         sandbox="allow-scripts allow-same-origin allow-forms"
                         style="top: -120px; height: calc(100% + 120px);"
                     ></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Understanding Dog Communication Section -->
+        <section class="container mx-auto px-4 py-16 bg-gray-50">
+            <h2 class="text-3xl font-bold text-center mb-12">Understanding Your Dog's Language</h2>
+            
+            <!-- Communication Types Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+                <!-- Body Language -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">👥</div>
+                    <h3 class="text-xl font-bold mb-3">Body Language</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Tail position & movement</li>
+                        <li>• Ear positioning</li>
+                        <li>• Body posture</li>
+                        <li>• Facial expressions</li>
+                    </ul>
+                </div>
+
+                <!-- Vocal Signals -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔊</div>
+                    <h3 class="text-xl font-bold mb-3">Vocal Signals</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Different types of barks</li>
+                        <li>• Whining & whimpering</li>
+                        <li>• Growling patterns</li>
+                        <li>• Howling meanings</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Behaviors -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold mb-3">Interactive Signals</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Play invitations</li>
+                        <li>• Attention seeking</li>
+                        <li>• Bonding behaviors</li>
+                        <li>• Social signals</li>
+                    </ul>
+                </div>
+
+                <!-- Emotional States -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">💖</div>
+                    <h3 class="text-xl font-bold mb-3">Emotional States</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Happy & excited</li>
+                        <li>• Anxious & stressed</li>
+                        <li>• Fearful signals</li>
+                        <li>• Contentment signs</li>
+                    </ul>
+                </div>
+
+                <!-- Health Indicators -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🏥</div>
+                    <h3 class="text-xl font-bold mb-3">Health Indicators</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Discomfort signals</li>
+                        <li>• Pain expressions</li>
+                        <li>• Energy levels</li>
+                        <li>• Appetite changes</li>
+                    </ul>
+                </div>
+
+                <!-- Training Signals -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-3">Training Responses</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Understanding commands</li>
+                        <li>• Learning signals</li>
+                        <li>• Response patterns</li>
+                        <li>• Focus indicators</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h3 class="text-2xl font-bold mb-8">Why Understanding Matters</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🌟</div>
+                        <h4 class="text-lg font-bold mb-2">Better Bonding</h4>
+                        <p class="text-gray-600">Strengthen your relationship through clearer communication</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🎓</div>
+                        <h4 class="text-lg font-bold mb-2">Easier Training</h4>
+                        <p class="text-gray-600">Make training more effective with better understanding</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">❤️</div>
+                        <h4 class="text-lg font-bold mb-2">Happier Dogs</h4>
+                        <p class="text-gray-600">Meet your dog's needs more effectively</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Success Stories</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Story 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 text-xl font-bold mr-4">
+                            ML
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Mike & Luna</h4>
+                            <p class="text-gray-600">Anxiety Issues</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">★★★★★</div>
+                    <p class="text-gray-600">"Understanding Luna's anxiety signals helped us create a calmer environment. Now she's much more relaxed!"</p>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xl font-bold mr-4">
+                            LR
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Lisa & Rocky</h4>
+                            <p class="text-gray-600">Training Success</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">★★★★★</div>
+                    <p class="text-gray-600">"The behavior translator made training Rocky so much easier. We now understand each other perfectly!"</p>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 text-xl font-bold mr-4">
+                            TB
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Tom & Bella</h4>
+                            <p class="text-gray-600">Health Alert</p>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-3">★★★★★</div>
+                    <p class="text-gray-600">"Thanks to better understanding Bella's signals, we caught her health issue early. A real life-saver!"</p>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-16">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">500K+</div>
+                    <p class="text-gray-600">Behaviors Analyzed</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">98%</div>
+                    <p class="text-gray-600">User Satisfaction</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">30+</div>
+                    <p class="text-gray-600">Behavior Categories</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">15K+</div>
+                    <p class="text-gray-600">Daily Users</p>
                 </div>
             </div>
         </section>
