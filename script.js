@@ -253,4 +253,30 @@ document.addEventListener('DOMContentLoaded', function() {
             translateButton.click();
         });
     });
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        // 切换菜单显示/隐藏
+        mobileMenuButton.addEventListener('click', function(e) {
+            e.stopPropagation(); // 阻止事件冒泡
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 点击菜单项后关闭菜单
+        const menuItems = mobileMenu.getElementsByTagName('a');
+        Array.from(menuItems).forEach(item => {
+            item.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 点击页面其他区域关闭菜单
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    }
 }); 
