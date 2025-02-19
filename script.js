@@ -206,54 +206,9 @@ function addContextualTranslation(text) {
     return null;
 }
 
-// Update page functionality
+// 将移动端菜单代码移到顶层
 document.addEventListener('DOMContentLoaded', function() {
-    const translateButton = document.getElementById('translate-button');
-    const behaviorText = document.getElementById('human-text');
-    const translationResult = document.getElementById('translation-result');
-    const translatedText = document.getElementById('translated-text');
-
-    translateButton?.addEventListener('click', function() {
-        const text = behaviorText.value;
-        if (!text) return;
-
-        // Show loading state
-        this.disabled = true;
-        this.textContent = 'Interpreting...';
-
-        // Simulate processing delay
-        setTimeout(() => {
-            const interpretation = translateBehavior(text);
-            translatedText.textContent = interpretation;
-            translationResult.classList.remove('hidden');
-            
-            // Reset button
-            this.disabled = false;
-            this.textContent = 'Interpret Behavior';
-        }, 500);
-    });
-
-    // Add keyboard shortcut
-    behaviorText?.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            translateButton.click();
-        }
-    });
-
-    // Add quick select behavior functionality
-    const behaviorOptions = document.querySelectorAll('.behavior-option');
-    behaviorOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            // 添加"My dog is"前缀，除非行为描述已经包含"ing"
-            const behavior = this.textContent.trim();
-            const prefix = behavior.includes('ing') ? 'My dog is ' : 'My dog ';
-            behaviorText.value = prefix + behavior.toLowerCase();
-            // 自动触发翻译
-            translateButton.click();
-        });
-    });
-
+    // 移动端菜单功能
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
@@ -277,6 +232,56 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
             }
+        });
+    }
+
+    // 其他页面特定功能...
+    const translateButton = document.getElementById('translate-button');
+    const behaviorText = document.getElementById('human-text');
+    const translationResult = document.getElementById('translation-result');
+    const translatedText = document.getElementById('translated-text');
+
+    // 只在行为翻译页面添加这些功能
+    if (translateButton && behaviorText) {
+        translateButton?.addEventListener('click', function() {
+            const text = behaviorText.value;
+            if (!text) return;
+
+            // Show loading state
+            this.disabled = true;
+            this.textContent = 'Interpreting...';
+
+            // Simulate processing delay
+            setTimeout(() => {
+                const interpretation = translateBehavior(text);
+                translatedText.textContent = interpretation;
+                translationResult.classList.remove('hidden');
+                
+                // Reset button
+                this.disabled = false;
+                this.textContent = 'Interpret Behavior';
+            }, 500);
+        });
+
+        // Add keyboard shortcut
+        behaviorText?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                translateButton.click();
+            }
+        });
+
+        // Add quick select behavior functionality
+        const behaviorOptions = document.querySelectorAll('.behavior-option');
+        behaviorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // 添加"My dog is"前缀，除非行为描述已经包含"ing"
+                const behavior = this.textContent.trim();
+                const prefix = behavior.includes('ing') ? 'My dog is ' : 'My dog ';
+                behaviorText.value = prefix + behavior.toLowerCase();
+                // 自动触发翻译
+                translateButton.click();
+            });
         });
     }
 }); 
