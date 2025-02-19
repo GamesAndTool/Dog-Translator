@@ -19,8 +19,28 @@
                     <span class="mr-2">🐕</span>
                     Dog Translator
                 </a>
+                
+                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">Behavior Translator</a>
+                    <a href="translate.html" class="text-gray-600 hover:text-blue-600">Voice Translator</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">How It Works</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600">FAQ</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-blue-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="index.html" class="text-blue-600 font-semibold">Behavior Translator</a>
                     <a href="translate.html" class="text-gray-600 hover:text-blue-600">Voice Translator</a>
                     <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
                     <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">How It Works</a>
@@ -244,84 +264,164 @@
 
         <!-- Understanding Dog Communication Section -->
         <section class="container mx-auto px-4 py-16 bg-gray-50">
-            <h2 class="text-3xl font-bold text-center mb-12">Understanding Your Dog's Language</h2>
-            
-            <!-- Communication Types Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-                <!-- Body Language -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-3xl mb-4">👥</div>
-                    <h3 class="text-xl font-bold mb-3">Body Language</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Tail position & movement</li>
-                        <li>• Ear positioning</li>
-                        <li>• Body posture</li>
-                        <li>• Facial expressions</li>
-                    </ul>
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Understanding Your Dog's Language</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Discover the science behind dog communication and learn how to better understand your furry friend's needs, emotions, and behaviors.</p>
                 </div>
+                
+                <!-- Communication Types Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Body Language -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">👥</div>
+                        <h3 class="text-2xl font-bold mb-4">Body Language</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Tail Signals</h4>
+                                <p class="text-gray-600">Position and movement patterns indicate emotional state and intentions</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Ear Positioning</h4>
+                                <p class="text-gray-600">Reflects alertness, submission, or emotional responses</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Body Posture</h4>
+                                <p class="text-gray-600">Shows confidence, fear, playfulness, or submission</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Facial Expressions</h4>
+                                <p class="text-gray-600">Communicates emotional state and social intentions</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Vocal Signals -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-3xl mb-4">🔊</div>
-                    <h3 class="text-xl font-bold mb-3">Vocal Signals</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Different types of barks</li>
-                        <li>• Whining & whimpering</li>
-                        <li>• Growling patterns</li>
-                        <li>• Howling meanings</li>
-                    </ul>
-                </div>
+                    <!-- Vocal Signals -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🔊</div>
+                        <h3 class="text-2xl font-bold mb-4">Vocal Signals</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Bark Types</h4>
+                                <p class="text-gray-600">Different pitches and patterns for various situations</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Whining & Whimpering</h4>
+                                <p class="text-gray-600">Expresses needs, stress, or seeking attention</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Growling</h4>
+                                <p class="text-gray-600">Can be playful or warning depending on context</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Howling</h4>
+                                <p class="text-gray-600">Long-distance communication and group bonding</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Interactive Behaviors -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-3xl mb-4">🤝</div>
-                    <h3 class="text-xl font-bold mb-3">Interactive Signals</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Play invitations</li>
-                        <li>• Attention seeking</li>
-                        <li>• Bonding behaviors</li>
-                        <li>• Social signals</li>
-                    </ul>
-                </div>
+                    <!-- Interactive Signals -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🤝</div>
+                        <h3 class="text-2xl font-bold mb-4">Interactive Signals</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Play Behavior</h4>
+                                <p class="text-gray-600">Bowing, bouncing, and playful gestures</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Attention Seeking</h4>
+                                <p class="text-gray-600">Pawing, nudging, or bringing toys</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Bonding Signs</h4>
+                                <p class="text-gray-600">Leaning, following, and gentle eye contact</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Social Signals</h4>
+                                <p class="text-gray-600">Greeting behaviors and submission gestures</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Emotional States -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-3xl mb-4">💖</div>
-                    <h3 class="text-xl font-bold mb-3">Emotional States</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Happy & excited</li>
-                        <li>• Anxious & stressed</li>
-                        <li>• Fearful signals</li>
-                        <li>• Contentment signs</li>
-                    </ul>
-                </div>
+                    <!-- Emotional States -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">💖</div>
+                        <h3 class="text-2xl font-bold mb-4">Emotional States</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Joy & Excitement</h4>
+                                <p class="text-gray-600">Tail wagging, jumping, and playful barking</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Anxiety & Stress</h4>
+                                <p class="text-gray-600">Lip licking, yawning, and pacing</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Fear Response</h4>
+                                <p class="text-gray-600">Cowering, tail tucking, and avoidance</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Contentment</h4>
+                                <p class="text-gray-600">Relaxed posture and soft expressions</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Health Indicators -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-3xl mb-4">🏥</div>
-                    <h3 class="text-xl font-bold mb-3">Health Indicators</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Discomfort signals</li>
-                        <li>• Pain expressions</li>
-                        <li>• Energy levels</li>
-                        <li>• Appetite changes</li>
-                    </ul>
-                </div>
+                    <!-- Health Indicators -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🏥</div>
+                        <h3 class="text-2xl font-bold mb-4">Health Indicators</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Pain Signals</h4>
+                                <p class="text-gray-600">Changes in movement and vocalization</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Discomfort Signs</h4>
+                                <p class="text-gray-600">Excessive licking or scratching</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Energy Levels</h4>
+                                <p class="text-gray-600">Activity patterns and responsiveness</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Eating Habits</h4>
+                                <p class="text-gray-600">Changes in appetite and drinking</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Training Signals -->
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <div class="text-3xl mb-4">🎯</div>
-                    <h3 class="text-xl font-bold mb-3">Training Responses</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Understanding commands</li>
-                        <li>• Learning signals</li>
-                        <li>• Response patterns</li>
-                        <li>• Focus indicators</li>
-                    </ul>
+                    <!-- Training Responses -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🎯</div>
+                        <h3 class="text-2xl font-bold mb-4">Training Responses</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Command Recognition</h4>
+                                <p class="text-gray-600">Understanding and response to instructions</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Learning Signals</h4>
+                                <p class="text-gray-600">Signs of comprehension and progress</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Focus Indicators</h4>
+                                <p class="text-gray-600">Attention and engagement levels</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Reward Response</h4>
+                                <p class="text-gray-600">Reactions to positive reinforcement</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Benefits Section -->
+        <!-- Benefits Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Understanding Matters</h2>
             <div class="max-w-4xl mx-auto text-center mb-16">
                 <h3 class="text-2xl font-bold mb-8">Why Understanding Matters</h3>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -441,76 +541,102 @@
         </section>
 
         <!-- Scientific Research Section -->
-        <section class="container mx-auto px-4 py-16">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Understanding Dog Communication</h2>
-            <div class="max-w-4xl mx-auto prose prose-lg">
-                <p>The Human to Dog Translator represents a breakthrough in interspecies communication. Recent studies in canine cognition have revealed that dogs possess a remarkable ability to understand human emotions and intentions. Our advanced Human to Dog Translator leverages this natural capability, enhancing the bond between humans and their canine companions.</p>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">The Science Behind Dog Communication</h3>
-                <p>Dogs communicate through a complex combination of vocalizations, body language, and facial expressions. Research shows that dogs can produce at least 10 different types of vocalizations, each serving specific communicative functions. The Human to Dog Translator analyzes these patterns to facilitate better understanding between species.</p>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Breed-Specific Communication</h3>
-                <p>Different dog breeds have developed unique communication styles through selective breeding. Our Human to Dog Translator accounts for these variations, offering customized translations for over 50 breeds. From the vocal Siberian Husky to the more subtle Basenji, our system adapts to each breed's unique characteristics.</p>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Emotional Intelligence in Dogs</h3>
-                <p>Studies have shown that dogs can recognize human emotions with remarkable accuracy. The Human to Dog Translator builds on this natural ability, helping owners communicate their emotions more effectively to their pets. This emotional synchronization strengthens the human-animal bond and improves training outcomes.</p>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Practical Applications</h3>
-                <p>The Human to Dog Translator finds applications in various scenarios:</p>
-                <ul>
-                    <li>Professional dog training sessions</li>
-                    <li>Veterinary visits and medical care</li>
-                    <li>Behavioral therapy and rehabilitation</li>
-                    <li>Daily communication and bonding</li>
-                    <li>Multi-dog household management</li>
-                </ul>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Research-Backed Results</h3>
-                <p>Our Human to Dog Translator has been validated through extensive testing with professional trainers and behaviorists. Studies show that consistent use of the translator can lead to:</p>
-                <ul>
-                    <li>40% improvement in training response times</li>
-                    <li>60% reduction in communication-related behavioral issues</li>
-                    <li>85% increase in positive interactions between dogs and owners</li>
-                </ul>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Understanding Canine Body Language</h3>
-                <p>The Human to Dog Translator incorporates comprehensive knowledge of canine body language. Dogs use various physical signals to communicate:</p>
-                <ul>
-                    <li>Tail position and movement patterns</li>
-                    <li>Ear positioning and movements</li>
-                    <li>Facial expressions and eye contact</li>
-                    <li>Body posture and stance</li>
-                    <li>Paw and head movements</li>
-                </ul>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Success Stories</h3>
-                <p>Pet owners using our Human to Dog Translator report significant improvements in their relationships with their dogs. From resolving anxiety issues to enhancing training effectiveness, the translator has proven invaluable in numerous real-world scenarios.</p>
-                
-                <blockquote class="bg-blue-50 p-6 rounded-lg my-8">
-                    <p class="italic">"The Human to Dog Translator has completely transformed how I communicate with my rescue dog. What used to be guesswork is now clear, meaningful interaction."</p>
-                    <footer class="mt-2 text-gray-600">- Sarah M., Professional Dog Trainer</footer>
-                </blockquote>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Ongoing Development</h3>
-                <p>Our team continues to enhance the Human to Dog Translator through machine learning and user feedback. Recent developments include:</p>
-                <ul>
-                    <li>Advanced emotion recognition algorithms</li>
-                    <li>Breed-specific vocalization patterns</li>
-                    <li>Context-aware translation adjustments</li>
-                    <li>Multi-dog interaction analysis</li>
-                </ul>
-                
-                <h3 class="text-2xl font-bold mt-8 mb-4">Future of Dog Communication</h3>
-                <p>The Human to Dog Translator represents just the beginning of advanced interspecies communication. Ongoing research in animal cognition and artificial intelligence continues to unlock new possibilities for understanding our canine companions.</p>
+        <section class="container mx-auto px-4 py-16 bg-gray-50">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Understanding Dog Communication</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Scientific insights into how dogs communicate and understand human interaction</p>
+                </div>
 
-                <h3 class="text-2xl font-bold mt-8 mb-4">Evolution of Human-Dog Communication</h3>
-                <p>The development of the Human to Dog Translator builds upon thousands of years of co-evolution between humans and dogs. Archaeological evidence suggests that dogs began developing sophisticated communication skills with humans as early as 15,000 years ago. This natural foundation makes modern translation technology not just possible, but highly effective.</p>
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <!-- Research Findings -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🔬</div>
+                        <h3 class="text-2xl font-bold mb-6">Research Findings</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Cognitive Abilities</h4>
+                                <p class="text-gray-600">Studies show dogs can understand over 150 words and interpret human emotions with remarkable accuracy.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Social Intelligence</h4>
+                                <p class="text-gray-600">Dogs possess unique abilities to read human facial expressions and understand gestural communication.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Emotional Recognition</h4>
+                                <p class="text-gray-600">Research confirms dogs can detect human emotions through subtle changes in facial expressions and voice tones.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <h3 class="text-2xl font-bold mt-8 mb-4">Technology and Innovation</h3>
-                <p>Modern advances in artificial intelligence have revolutionized how we approach interspecies communication. The Human to Dog Translator combines neural networks, behavioral science, and real-world testing to create a comprehensive translation system. This integration of multiple technologies ensures accurate and contextually appropriate translations across different situations and environments.</p>
+                    <!-- Communication Methods -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🧠</div>
+                        <h3 class="text-2xl font-bold mb-6">Communication Methods</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Vocal Communication</h4>
+                                <p class="text-gray-600">Different barks and vocalizations serve specific purposes in dog-to-human communication.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Body Language</h4>
+                                <p class="text-gray-600">Dogs use a sophisticated system of physical signals to express their intentions and emotions.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2">Chemical Communication</h4>
+                                <p class="text-gray-600">Scent detection plays a crucial role in how dogs interpret their environment and human states.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <h3 class="text-2xl font-bold mt-8 mb-4">Looking Forward</h3>
-                <p>As we continue to refine our Human to Dog Translator, we're exploring new frontiers in animal communication. Future updates will incorporate advanced features such as real-time emotion tracking, breed-specific dialect recognition, and multi-modal communication analysis. These developments promise to make human-dog communication even more natural and intuitive.</p>
+                <!-- Key Studies -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">📊</div>
+                        <h4 class="text-xl font-bold mb-3">Behavioral Studies</h4>
+                        <p class="text-gray-600">Recent research has mapped over 100 distinct dog communication signals and their meanings in different contexts.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🧪</div>
+                        <h4 class="text-xl font-bold mb-3">Neural Response</h4>
+                        <p class="text-gray-600">Brain imaging studies reveal dogs process human words in ways similar to how humans process language.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🔍</div>
+                        <h4 class="text-xl font-bold mb-3">Evolutionary Bond</h4>
+                        <p class="text-gray-600">15,000+ years of domestication have uniquely adapted dogs to understand and communicate with humans.</p>
+                    </div>
+                </div>
+
+                <!-- Research Impact -->
+                <div class="mt-12 bg-white p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Research Applications</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">🎯</div>
+                            <h4 class="font-semibold mb-2">Training Methods</h4>
+                            <p class="text-gray-600">Enhanced training techniques based on scientific understanding</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">💝</div>
+                            <h4 class="font-semibold mb-2">Behavioral Therapy</h4>
+                            <p class="text-gray-600">Improved approaches to addressing behavioral issues</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">🏥</div>
+                            <h4 class="font-semibold mb-2">Veterinary Care</h4>
+                            <p class="text-gray-600">Better assessment of health and well-being</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">🤝</div>
+                            <h4 class="font-semibold mb-2">Human-Dog Bond</h4>
+                            <p class="text-gray-600">Strengthened relationships through better understanding</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
