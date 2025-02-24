@@ -206,13 +206,58 @@ function getEmotionEmoji(emotion) {
 // UI Interaction
 document.addEventListener('DOMContentLoaded', function() {
     const translateButton = document.getElementById('translate-button');
+    const voiceInputButton = document.getElementById('voice-input-button');
     const humanInput = document.getElementById('human-input');
     const emotionSelect = document.getElementById('emotion-select');
+    const breedSizeSelect = document.getElementById('breed-size-select');
     const translationDisplay = document.getElementById('translation-display');
     
+    // Speech Recognition Setup
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition;
+    
+    if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.lang = 'en-US';
+        
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            humanInput.value = transcript;
+            voiceInputButton.textContent = 'Click to Speak';
+            voiceInputButton.disabled = false;
+        };
+        
+        recognition.onerror = function(event) {
+            console.error('Speech recognition error:', event.error);
+            voiceInputButton.textContent = 'Click to Speak';
+            voiceInputButton.disabled = false;
+        };
+    }
+    
+    // Voice Input Button Handler
+    if (voiceInputButton) {
+        voiceInputButton.addEventListener('click', function() {
+            if (SpeechRecognition) {
+                if (recognition.state === 'listening') {
+                    recognition.stop();
+                    this.textContent = 'Click to Speak';
+                } else {
+                    recognition.start();
+                    this.textContent = 'Listening...';
+                    this.disabled = true;
+                }
+            } else {
+                alert('Speech recognition is not supported in your browser.');
+            }
+        });
+    }
+    
+    // Translation Button Handler
     translateButton.addEventListener('click', function() {
         const text = humanInput.value;
         const emotion = emotionSelect.value;
+        const breedSize = breedSizeSelect.value;
         
         if (!text) return;
         
@@ -222,14 +267,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simulate processing delay
         setTimeout(() => {
-            const translation = translateToBarks(text, emotion);
+            const translation = translateToBarks(text, emotion, breedSize);
             
             // Display translation with visual patterns
             translationDisplay.innerHTML = `
                 <div class="text-center">
                     <div class="text-2xl mb-4">${translation.pattern.join(' ')}</div>
                     <div class="text-xl mb-2">${translation.sounds.join(' ')}</div>
-                    <p class="text-gray-600 mt-4">Translation based on ${emotion} emotion</p>
+                    <p class="text-gray-600 mt-4">Translation based on ${emotion} emotion (${breedSize} breed size)</p>
                 </div>
             `;
             

@@ -50,6 +50,16 @@
                                 placeholder="Type your message here..."
                             ></textarea>
                             
+                            <!-- Breed Selection -->
+                            <div class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Dog Breed Size:</label>
+                                <select id="breed-size-select" class="w-full p-2 border border-gray-300 rounded-lg">
+                                    <option value="small">Small (Chihuahua, Yorkshire Terrier, etc.)</option>
+                                    <option value="medium" selected>Medium (Beagle, Border Collie, etc.)</option>
+                                    <option value="large">Large (German Shepherd, Golden Retriever, etc.)</option>
+                                </select>
+                            </div>
+
                             <!-- Emotion Selection -->
                             <div class="mt-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Emotion:</label>
@@ -59,7 +69,23 @@
                                     <option value="alert">Alert/Warning</option>
                                     <option value="playful">Playful</option>
                                     <option value="attention">Attention Seeking</option>
+                                    <option value="tired">Tired/Sleepy</option>
+                                    <option value="hungry">Hungry</option>
+                                    <option value="anxious">Anxious/Nervous</option>
                                 </select>
+                            </div>
+
+                            <!-- Voice Input Button -->
+                            <div class="mt-4">
+                                <button 
+                                    id="voice-input-button"
+                                    class="w-full flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors"
+                                >
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                                    </svg>
+                                    Click to Speak
+                                </button>
                             </div>
                         </div>
 
@@ -292,4 +318,4 @@
     <script src="translate.js"></script>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
