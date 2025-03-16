@@ -119,59 +119,151 @@ const behaviorPatterns = {
         'air': 'I\'ve caught an interesting scent and gathering information',
         'your face': 'I\'m greeting you and checking your mood',
         'other dogs': 'I\'m gathering social information and saying hello'
+    },
+
+    // 新增社交行为
+    'greeting': {
+        'jumping': 'I\'m super excited to see you! This is my enthusiastic welcome!',
+        'gentle tail wag': 'Hello friend! I\'m being polite and friendly',
+        'sniffing': 'Nice to meet you, let me learn more about you',
+        'play bow with tail wag': 'Hi! Would you like to play with me?',
+        'rolling showing belly': 'I trust you completely and want to be friends!'
+    },
+
+    // 新增焦虑行为
+    'anxiety': {
+        'pacing': 'I\'m feeling anxious or restless about something',
+        'excessive licking': 'I\'m trying to self-soothe because I\'m stressed',
+        'destructive chewing': 'I\'m dealing with anxiety or boredom',
+        'hiding under furniture': 'I\'m scared and need a safe space',
+        'clingy behavior': 'I\'m feeling insecure and need reassurance'
+    },
+
+    // 新增狩猎本能行为
+    'hunting': {
+        'stalking': 'My predator instincts are activated - I\'m tracking something',
+        'pointing': 'I\'ve detected something interesting over there!',
+        'chasing': 'My hunting instincts are telling me to pursue that',
+        'pouncing': 'Got it! This is my natural hunting behavior',
+        'head low tracking': 'I\'m following an interesting scent trail'
+    },
+
+    // 新增护卫行为
+    'guarding': {
+        'alert barking': 'Warning! I\'m letting you know about something suspicious',
+        'patrolling': 'I\'m checking our territory to keep us safe',
+        'standing guard': 'I\'m watching over my family and our space',
+        'blocking path': 'I\'m protecting you from what I think might be unsafe',
+        'herding': 'I\'m keeping my family group together and safe'
+    },
+
+    // 新增身体语言
+    'posture': {
+        'hackles raised': 'I\'m very aroused or alarmed by something',
+        'weight forward': 'I\'m very interested and focused on something ahead',
+        'weight back': 'I\'m being cautious or preparing to retreat',
+        'stiff body': 'I\'m feeling tense and assessing the situation',
+        'loose body': 'I\'m relaxed and comfortable in this environment'
+    },
+
+    // 新增舒适行为
+    'comfort': {
+        'stretching after rest': 'Ahh, that was a good nap! Getting my body moving again',
+        'sighing while lying': 'I\'m content and relaxed right now',
+        'sleeping in sun patch': 'This warm spot is perfect for resting',
+        'nesting behavior': 'I\'m making my resting spot just right',
+        'belly exposed': 'I feel completely safe and comfortable here'
+    },
+
+    // 新增沟通信号
+    'signals': {
+        'head tilt': 'I\'m trying to understand what you\'re saying or doing',
+        'pawing at you': 'Hey! I need something specific from you',
+        'bringing objects': 'Look at this! I want to show you something important',
+        'nose bump': 'Excuse me, could I have your attention please?',
+        'sitting at feet': 'I\'m being polite while asking for something'
+    },
+
+    // 新增健康相关行为
+    'health': {
+        'excessive drinking': 'I might be feeling unwell or very thirsty',
+        'refusing food': 'I\'m not feeling well or something\'s wrong',
+        'change in activity': 'My energy levels aren\'t normal, might need checking',
+        'unusual vocalization': 'I\'m trying to tell you I\'m uncomfortable',
+        'changes in sleep': 'Something\'s affecting my normal rest patterns'
+    },
+
+    // 新增学习行为
+    'learning': {
+        'eye contact': 'I\'m focused and ready to learn from you',
+        'offering behaviors': 'I\'m trying to figure out what you want',
+        'quick response': 'I understand what you\'re asking and I\'m eager to comply',
+        'hesitation': 'I\'m not quite sure what you want me to do',
+        'looking for treats': 'I know good behavior gets rewarded!'
     }
 };
 
 // Main translation function
 function translateBehavior(text) {
-    text = text.toLowerCase().trim();
-    let interpretation = [];
-    
-    // Check for each behavior pattern
-    for (const [behavior, meanings] of Object.entries(behaviorPatterns)) {
-        if (text.includes(behavior)) {
-            if (typeof meanings === 'object') {
-                // Check for specific modifiers
-                let foundModifier = false;
-                for (const [modifier, meaning] of Object.entries(meanings)) {
-                    // 使用更灵活的匹配方式
-                    const modifierWords = modifier.split(' ');
-                    if (modifierWords.every(word => text.includes(word))) {
-                        interpretation.push(meaning);
-                        foundModifier = true;
-                        break; // 找到匹配后就停止继续查找
-                    }
+    const interpretation = [];
+    text = text.toLowerCase();
+
+    // 首先尝试匹配完整的行为短语
+    for (const [category, behaviors] of Object.entries(behaviorPatterns)) {
+        if (typeof behaviors === 'object') {
+            for (const [behavior, meaning] of Object.entries(behaviors)) {
+                // 改进匹配逻辑，使其更灵活
+                if (text.includes(behavior.toLowerCase()) || 
+                    text.includes(behavior.toLowerCase().replace(/ /g, '')) ||
+                    text.replace(/-/g, ' ').includes(behavior.toLowerCase())) {
+                    interpretation.push(meaning);
                 }
-                // If no specific modifier found but behavior matches
-                if (!foundModifier) {
-                    // 尝试匹配部分关键词
-                    for (const [modifier, meaning] of Object.entries(meanings)) {
-                        const modifierWords = modifier.split(' ');
-                        const matchCount = modifierWords.filter(word => text.includes(word)).length;
-                        if (matchCount > 0) {
-                            interpretation.push(meaning);
-                            break;
-                        }
-                    }
-                }
-            } else {
-                interpretation.push(meanings);
             }
+        } else if (typeof behaviors === 'string' && text.includes(category.toLowerCase())) {
+            interpretation.push(behaviors);
         }
     }
-    
-    // Add contextual interpretations
+
+    // 处理复合行为
     const contextualMeaning = addContextualTranslation(text);
     if (contextualMeaning) {
         interpretation.push(contextualMeaning);
     }
-    
-    // If no patterns matched
+
+    // 如果没有找到匹配的行为
     if (interpretation.length === 0) {
-        return "I couldn't recognize specific behaviors. Try describing tail position, ear position, body posture, or specific actions.";
+        // 检查是否包含任何关键词
+        const keywords = [
+            'jumping', 'greeting', 'tail', 'wag', 'sniffing', 'rolling',
+            'pacing', 'licking', 'hiding', 'chewing', 'clingy',
+            'stalking', 'pointing', 'chasing', 'pouncing', 'tracking',
+            'barking', 'patrolling', 'guarding', 'herding',
+            'hackles', 'stiff', 'loose', 'relaxed',
+            'stretching', 'sighing', 'sleeping', 'nesting',
+            'drinking', 'eating', 'vocalization', 'sleep',
+            'eye contact', 'treats', 'learning', 'training'
+        ];
+
+        const hasKeyword = keywords.some(keyword => text.includes(keyword));
+        if (!hasKeyword) {
+            return "I couldn't recognize specific behaviors. Try describing tail position, ear position, body posture, or specific actions.";
+        }
+
+        // 尝试基于上下文推断含义
+        let inferredMeaning = "Based on your description, your dog might be ";
+        if (text.includes('jumping') || text.includes('greeting')) {
+            inferredMeaning += "showing excitement and wanting to interact.";
+        } else if (text.includes('hiding') || text.includes('anxious')) {
+            inferredMeaning += "feeling anxious or uncomfortable.";
+        } else if (text.includes('playing') || text.includes('excited')) {
+            inferredMeaning += "in a playful and energetic mood.";
+        } else {
+            inferredMeaning += "trying to communicate something. Could you provide more details about their body language?";
+        }
+        return inferredMeaning;
     }
-    
-    // Remove duplicates and format
+
+    // 移除重复的解释并格式化
     const uniqueInterpretations = [...new Set(interpretation)];
     return uniqueInterpretations.map(meaning => '• ' + meaning).join('\n');
 }
@@ -203,6 +295,27 @@ function addContextualTranslation(text) {
         return "I trust you completely and would love a belly rub!";
     }
     
+    // 新增组合行为解释
+    if (text.includes('tail') && text.includes('ears forward') && text.includes('alert')) {
+        return "I've detected something that needs our attention!";
+    }
+    
+    if (text.includes('yawning') && text.includes('looking away')) {
+        return "I'm feeling a bit overwhelmed and need some space.";
+    }
+    
+    if (text.includes('pawing') && text.includes('bringing toy')) {
+        return "I really want to play with you! Let's have some fun together!";
+    }
+
+    if (text.includes('sniffing') && text.includes('tail high')) {
+        return "I'm investigating something interesting while feeling confident!";
+    }
+
+    if (text.includes('barking') && text.includes('running in circles')) {
+        return "I'm super excited and want you to join in my enthusiasm!";
+    }
+
     return null;
 }
 
