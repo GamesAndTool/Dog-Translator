@@ -397,4 +397,50 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // 搜索功能
+    const searchInput = document.getElementById('behavior-search');
+    const allDetails = document.querySelectorAll('details');
+    const allBehaviorButtons = document.querySelectorAll('.behavior-option');
+
+    searchInput?.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        allBehaviorButtons.forEach(button => {
+            const text = button.textContent.toLowerCase().trim();
+            const detail = button.closest('details');
+            
+            if (text.includes(searchTerm)) {
+                button.style.display = '';
+                if (detail) detail.open = true;
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // 如果搜索框为空，关闭所有面板
+        if (!searchTerm) {
+            allDetails.forEach(detail => {
+                detail.open = false;
+            });
+        }
+    });
+
+    // 折叠面板动画
+    allDetails.forEach(detail => {
+        detail.addEventListener('toggle', function() {
+            const arrow = this.querySelector('summary span:last-child');
+            if (this.open) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0)';
+            }
+        });
+    });
+
+    // 添加快捷方式提示
+    const behaviorOptions = document.querySelectorAll('.behavior-option');
+    behaviorOptions.forEach(option => {
+        option.setAttribute('title', 'Click to auto-fill and translate');
+    });
 }); 
