@@ -65,284 +65,355 @@
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold mb-3">Common Behaviors:</h3>
                         
-                        <!-- Tail Behaviors -->
+                        <!-- 添加搜索框 -->
                         <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Tail Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Wagging tail rapidly
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Wagging tail slowly
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Tail between legs
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Tail curved like question mark
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Tail stiff
-                                </button>
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    id="behavior-search"
+                                    class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="Search behaviors..."
+                                >
+                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
                             </div>
                         </div>
 
-                        <!-- Body Language -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Body Language:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Lowering front body
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Rolling on back
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Stretching front legs
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Rolling on side
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Stretching neck
-                                </button>
-                            </div>
-                        </div>
+                        <!-- 将行为类别改为可折叠面板，完全按字母序排列 -->
+                        <div class="space-y-4">
+                            <!-- Anxiety Signs -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Anxiety Signs</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Pacing anxiously
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Excessive licking
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Hiding under furniture
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Showing clingy behavior
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- Face/Head Expressions -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Face & Head Expressions:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Ears pulled back
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Ears pointing forward
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Tilting head
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Licking lips
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Yawning repeatedly
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Showing whites of eyes
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Nose wrinkling
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Body Language -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Body Language</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Hackles raised
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Lowering front body
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Loose relaxed body
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Rolling on back
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Rolling on side
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Stiff body posture
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Stretching front legs
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Stretching neck
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Weight shifted forward
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- Interactive Behaviors -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Interactive Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Bringing toys
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Pawing at me
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Following me everywhere
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Leaning against me
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Bringing leash
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Sitting on feet
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Nudging with nose
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Comfort Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Comfort Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Stretching after rest
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Sighing while lying down
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Sleeping in sun patch
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Making nesting spot
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- Stress Signals -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Stress Signals:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Showing teeth
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Pacing back and forth
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Excessive drooling
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Shaking off
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Excessive scratching
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Freezing in place
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Face & Head Expressions -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Face & Head Expressions</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Ears pulled back
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Ears pointing forward
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Tilting head
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Licking lips
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Yawning repeatedly
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Showing whites of eyes
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Nose wrinkling
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增社交行为 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Social Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Jumping to greet
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Gentle tail wag greeting
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Play bow with tail wag
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Rolling showing belly
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Guarding Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Guarding Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Alert barking at something
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Patrolling the area
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Standing guard
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Herding family members
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增焦虑行为 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Anxiety Signs:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Pacing anxiously
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Excessive licking
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Hiding under furniture
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Showing clingy behavior
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Health Indicators -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Health Indicators</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Drinking excessively
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Refusing food
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Unusual vocalization
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Changed sleep pattern
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增护卫行为 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Guarding Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Alert barking at something
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Patrolling the area
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Standing guard
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Herding family members
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Interactive Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Interactive Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Bringing toys
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Pawing at me
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Following me everywhere
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Leaning against me
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Bringing leash
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Sitting on feet
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Nudging with nose
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增身体语言 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Body Language:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Hackles raised
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Weight shifted forward
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Stiff body posture
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Loose relaxed body
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Learning Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Learning Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Making eye contact
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Offering new behaviors
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Quick command response
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Looking for treats
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增舒适行为 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Comfort Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Stretching after rest
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Sighing while lying down
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Sleeping in sun patch
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Making nesting spot
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Other Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Other Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Circling before lying
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Digging blankets
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Sniffing ground intensely
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Sleeping on back
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Sleeping curled up
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增健康相关行为 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Health Indicators:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Drinking excessively
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Refusing food
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Unusual vocalization
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Changed sleep pattern
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Social Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Social Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Jumping to greet
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Gentle tail wag greeting
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Play bow with tail wag
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Rolling showing belly
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- 新增学习行为 -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Learning Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Making eye contact
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Offering new behaviors
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Quick command response
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Looking for treats
-                                </button>
-                            </div>
-                        </div>
+                            <!-- Stress Signals -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Stress Signals</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Showing teeth
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Pacing back and forth
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Excessive drooling
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Shaking off
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Excessive scratching
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Freezing in place
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
 
-                        <!-- Other Behaviors -->
-                        <div class="mb-4">
-                            <p class="text-sm text-gray-600 mb-2">Other Behaviors:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Circling before lying
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Digging blankets
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Sniffing ground intensely
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Sleeping on back
-                                </button>
-                                <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
-                                    Sleeping curled up
-                                </button>
-                            </div>
+                            <!-- Tail Behaviors -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">Tail Behaviors</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Wagging tail rapidly
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Wagging tail slowly
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Tail between legs
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Tail curved like question mark
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            Tail stiff
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
                         </div>
                     </div>
                     
