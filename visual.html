@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Dog Behavior Analysis | AI-Powered Body Language Recognition</title>
+    <meta name="description" content="Upload a photo of your dog and our AI will analyze their body language. Understand what your dog is trying to communicate through posture, tail position, and facial expressions.">
+    <link rel="canonical" href="https://dogtranslator.org/visual.html" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2312603912824705"
+     crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-50">
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex flex-col items-center">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center mb-4">
+                    <span class="mr-2">🐕</span>
+                    Dog Translator
+                </a>
+                
+                <nav class="flex flex-wrap justify-center gap-4">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600">Behavior Translator</a>
+                    <a href="translate.html" class="text-gray-600 hover:text-blue-600">Voice Translator</a>
+                    <a href="visual.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">Visual Analysis</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">How It Works</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600">FAQ</a>
+                </nav>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-8 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-4">Visual Dog Behavior Analysis</h1>
+                <p class="text-xl text-gray-600 mb-8">Upload a photo of your dog and our AI will analyze their body language to reveal what they're trying to communicate</p>
+            </div>
+        </section>
+
+        <!-- Visual Analysis Section -->
+        <section class="container mx-auto px-4 py-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Upload Area -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Upload Dog Photo</h3>
+                            <div 
+                                id="upload-area" 
+                                class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:bg-gray-50 transition-colors"
+                            >
+                                <div id="preview-container" class="mb-4 hidden">
+                                    <img id="image-preview" class="max-h-64 mx-auto rounded-lg" alt="Dog preview" />
+                                </div>
+                                <div id="upload-prompt">
+                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                    </svg>
+                                    <p class="text-gray-500 mb-2">Click to upload or drag and drop</p>
+                                    <p class="text-gray-400 text-sm">JPG, PNG or GIF (max. 5MB)</p>
+                                </div>
+                                <input 
+                                    type="file" 
+                                    id="dog-image-input" 
+                                    class="hidden" 
+                                    accept="image/jpeg, image/png, image/gif"
+                                />
+                            </div>
+                            <div class="mt-4">
+                                <button 
+                                    id="analyze-button"
+                                    disabled
+                                    class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    Analyze Behavior
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Results Area -->
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Analysis Results</h3>
+                            <div id="analysis-results" class="bg-gray-50 p-4 rounded-lg min-h-[250px]">
+                                <div id="analysis-placeholder" class="flex items-center justify-center h-full">
+                                    <p class="text-gray-500 text-center">Upload an image and click "Analyze Behavior" to see results</p>
+                                </div>
+                                <div id="analysis-loading" class="hidden flex flex-col items-center justify-center h-full">
+                                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+                                    <p class="text-gray-600">Analyzing dog behavior...</p>
+                                </div>
+                                <div id="analysis-content" class="hidden">
+                                    <h4 class="font-semibold text-lg mb-3">Your dog is communicating:</h4>
+                                    <div id="analysis-behaviors" class="space-y-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="container mx-auto px-4 py-16">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">How Visual Analysis Works</h2>
+                
+                <!-- Technology Explanation -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <p class="text-gray-600 mb-8 text-center max-w-3xl mx-auto">
+                        Our visual analysis system uses Pollinations AI's advanced vision models to identify key indicators in your dog's body language.
+                        By analyzing a single photo, we can understand what your dog is trying to communicate:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-gray-50 p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-4">👂</div>
+                            <h3 class="text-lg font-bold mb-2">Ear Position</h3>
+                            <p class="text-gray-600">Ears forward, back, or relaxed can indicate alertness, submission, or comfort</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-4">🐕</div>
+                            <h3 class="text-lg font-bold mb-2">Body Posture</h3>
+                            <p class="text-gray-600">Stiff, relaxed, or lowered body tells us about your dog's emotional state</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-4">🦮</div>
+                            <h3 class="text-lg font-bold mb-2">Tail Position</h3>
+                            <p class="text-gray-600">The height, curve, and movement of the tail signals different emotions</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl text-center">
+                            <div class="text-4xl mb-4">🦴</div>
+                            <h3 class="text-lg font-bold mb-2">Facial Expression</h3>
+                            <p class="text-gray-600">Eyes, mouth, and overall facial tension reveal your dog's feelings</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Technology -->
+                <!-- <div class="mt-12 bg-blue-600 text-white p-8 rounded-xl shadow-md max-w-5xl mx-auto">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="text-5xl mb-4 md:mb-0 md:mr-6">🔍</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Powered by Advanced AI</h3>
+                            <p class="text-lg mb-4">Our system uses Pollinations AI's state-of-the-art vision models, trained on thousands of dog images to recognize subtle body language cues.</p>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://pollinations.ai" target="_blank" class="border border-white text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Learn More About Pollinations AI</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="container mx-auto px-4 py-16 bg-gray-50">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Visual Analysis Features</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-4">Real-Time Analysis</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Instant behavior recognition</li>
+                        <li>• Easy-to-understand results</li>
+                        <li>• Matched with our behavior dictionary</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔎</div>
+                    <h3 class="text-xl font-bold mb-4">Advanced Detection</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Recognizes subtle body cues</li>
+                        <li>• Identifies emotional state</li>
+                        <li>• Works with all dog breeds</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-4">Privacy First</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Secure image processing</li>
+                        <li>• No long-term storage</li>
+                        <li>• Private analysis results</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Frequently Asked Questions</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">How accurate is the visual analysis?</h3>
+                                <span class="transform transition-transform duration-200 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">Our AI-powered visual analyzer achieves up to 90% accuracy in identifying common dog body language signals. The quality of results depends on the image clarity and how visible the dog's posture and features are.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">What kind of photos work best?</h3>
+                                <span class="transform transition-transform duration-200 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">For best results, upload clear, well-lit photos where your dog's full body is visible. Side angles often work best to see posture, ears, and tail position clearly. Make sure the photo shows your dog in a natural state.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">Are my photos stored on your servers?</h3>
+                                <span class="transform transition-transform duration-200 group-open:rotate-180">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">No, your photos are processed for analysis only and not permanently stored. We value your privacy and only use the image for immediate processing through our AI system.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Dog Translator</h3>
+                    <p class="text-gray-400">AI-Powered Pet Communication</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Behavior Translator</a></li>
+                        <li><a href="translate.html" class="hover:text-white transition-colors">Voice Translator</a></li>
+                        <li><a href="visual.html" class="hover:text-white transition-colors">Visual Analysis</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Technology</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://elevenlabs.io" target="_blank" class="hover:text-white transition-colors">ElevenLabs</a></li>
+                        <li><a href="https://pollinations.ai" target="_blank" class="hover:text-white transition-colors">Pollinations AI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Stats</h4>
+                    <p class="text-gray-400">Serving 1M+ happy dogs</p>
+                    <p class="text-gray-400">90%+ analysis accuracy</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Dog Translator. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

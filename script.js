@@ -443,4 +443,260 @@ document.addEventListener('DOMContentLoaded', function() {
     behaviorOptions.forEach(option => {
         option.setAttribute('title', 'Click to auto-fill and translate');
     });
+    
+    // 视觉识别分析功能
+    setupVisualAnalysis();
 }); 
+
+// 视觉识别分析功能
+function setupVisualAnalysis() {
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('dog-image-input');
+    const previewContainer = document.getElementById('preview-container');
+    const imagePreview = document.getElementById('image-preview');
+    const uploadPrompt = document.getElementById('upload-prompt');
+    const analyzeButton = document.getElementById('analyze-button');
+    const analysisPlaceholder = document.getElementById('analysis-placeholder');
+    const analysisLoading = document.getElementById('analysis-loading');
+    const analysisContent = document.getElementById('analysis-content');
+    const analysisBehaviors = document.getElementById('analysis-behaviors');
+    
+    // 如果元素不存在，说明当前页面不是包含视觉分析的页面
+    if (!uploadArea || !fileInput) return;
+    
+    // 处理上传区域点击
+    uploadArea.addEventListener('click', () => {
+        fileInput.click();
+    });
+    
+    // 处理拖放功能
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('border-blue-500');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('border-blue-500');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('border-blue-500');
+        
+        if (e.dataTransfer.files.length) {
+            handleFile(e.dataTransfer.files[0]);
+        }
+    });
+    
+    // 处理文件选择
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+            handleFile(fileInput.files[0]);
+        }
+    });
+    
+    // 处理分析按钮点击
+    analyzeButton.addEventListener('click', () => {
+        if (!fileInput.files.length) return;
+        
+        // 显示加载状态
+        analysisPlaceholder.classList.add('hidden');
+        analysisContent.classList.add('hidden');
+        analysisLoading.classList.remove('hidden');
+        analyzeButton.disabled = true;
+        
+        // 获取选定的文件
+        const file = fileInput.files[0];
+        
+        // 使用Pollinations API分析图片
+        analyzeImage(file)
+            .then(results => {
+                // 处理并显示分析结果
+                displayAnalysisResults(results);
+            })
+            .catch(error => {
+                console.error('Error analyzing image:', error);
+                analysisBehaviors.innerHTML = `
+                    <div class="bg-red-50 text-red-600 p-4 rounded-lg">
+                        <p class="font-semibold">Analysis failed</p>
+                        <p class="text-sm">We couldn't analyze this image. Please try again with a clearer photo of your dog.</p>
+                    </div>
+                `;
+            })
+            .finally(() => {
+                // 隐藏加载状态，显示结果
+                analysisLoading.classList.add('hidden');
+                analysisContent.classList.remove('hidden');
+                analyzeButton.disabled = false;
+            });
+    });
+    
+    // 处理文件
+    function handleFile(file) {
+        // 检查文件类型和大小
+        if (!file.type.match('image/jpeg') && !file.type.match('image/png') && !file.type.match('image/gif')) {
+            alert('Please upload a JPG, PNG or GIF image');
+            return;
+        }
+        
+        if (file.size > 5 * 1024 * 1024) {
+            alert('File size must not exceed 5MB');
+            return;
+        }
+        
+        // 显示预览
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            imagePreview.src = e.target.result;
+            previewContainer.classList.remove('hidden');
+            uploadPrompt.classList.add('hidden');
+            analyzeButton.disabled = false;
+        };
+        reader.readAsDataURL(file);
+    }
+    
+    // 使用Pollinations API分析图片
+    async function analyzeImage(file) {
+        try {
+            // 将文件转换为base64格式
+            const base64ImageDataUrl = await fileToBase64(file);
+            
+            // 准备消息内容
+            const payload = {
+                model: "openai-large", // 确保支持视觉功能
+                messages: [
+                    {
+                        role: "system",
+                        content: "You are an expert in dog behavior analysis. Analyze the image of a dog and identify key body language indicators like ear position, tail position, body posture, and facial expressions. Explain what these signals might indicate about the dog's emotional state and what they might be trying to communicate. Focus only on visible behavioral cues in the image."
+                    },
+                    {
+                        role: "user",
+                        content: [
+                            {
+                                type: "text",
+                                text: "Please analyze this dog's body language and behavior in the image. What is this dog trying to communicate based on their posture, ear position, tail, and facial expression? Give me specific details about what you observe and what it means."
+                            },
+                            {
+                                type: "image_url",
+                                image_url: {
+                                    url: base64ImageDataUrl
+                                }
+                            }
+                        ]
+                    }
+                ],
+                max_tokens: 800 // 允许更长的回复
+            };
+            
+            // 发送请求到Pollinations API
+            const response = await fetch('https://text.pollinations.ai/openai', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            });
+            
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`API error: ${response.status}, message: ${errorText}`);
+            }
+            
+            const data = await response.json();
+            return data.choices[0].message.content;
+        } catch (error) {
+            console.error('Error in API call:', error);
+            throw error;
+        }
+    }
+    
+    // 将文件转换为base64
+    function fileToBase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result); // 结果包含'data:mime/type;base64,'前缀
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
+    
+    // 显示分析结果
+    function displayAnalysisResults(analysisText) {
+        // 清空之前的结果
+        analysisBehaviors.innerHTML = '';
+        
+        // 将结果分成段落
+        const paragraphs = analysisText.split('\n\n').filter(p => p.trim().length > 0);
+        
+        // 为每个段落创建一个条目
+        paragraphs.forEach(paragraph => {
+            // 创建一个结果条目
+            const resultItem = document.createElement('div');
+            resultItem.className = 'bg-blue-50 p-4 rounded-lg';
+            resultItem.innerHTML = `<p>${paragraph}</p>`;
+            analysisBehaviors.appendChild(resultItem);
+        });
+        
+        // 添加来自行为字典的相关翻译
+        // 这部分可以根据分析文本进行匹配，找到相关的行为解释
+        const behaviorKeywords = extractKeyBehaviors(analysisText);
+        if (behaviorKeywords.length > 0) {
+            const dictionarySection = document.createElement('div');
+            dictionarySection.className = 'mt-4 pt-4 border-t border-gray-200';
+            dictionarySection.innerHTML = `
+                <h4 class="font-semibold mb-2">Related behaviors from our dictionary:</h4>
+                <div id="related-behaviors" class="space-y-2"></div>
+            `;
+            analysisBehaviors.appendChild(dictionarySection);
+            
+            const relatedBehaviors = document.getElementById('related-behaviors');
+            behaviorKeywords.forEach(keyword => {
+                const meaning = findBehaviorMeaning(keyword);
+                if (meaning) {
+                    const behaviorItem = document.createElement('div');
+                    behaviorItem.className = 'bg-gray-50 p-3 rounded-lg';
+                    behaviorItem.innerHTML = `
+                        <p class="font-medium">${keyword}</p>
+                        <p class="text-gray-600 text-sm">${meaning}</p>
+                    `;
+                    relatedBehaviors.appendChild(behaviorItem);
+                }
+            });
+        }
+    }
+    
+    // 从分析文本中提取关键行为词
+    function extractKeyBehaviors(text) {
+        const keywords = [
+            'tail wagging', 'ears forward', 'ears back', 'play bow', 'lowering body',
+            'relaxed posture', 'alert posture', 'showing teeth', 'panting', 'hackles raised',
+            'direct eye contact', 'avoiding eye contact', 'body stiff', 'relaxed mouth'
+        ];
+        
+        return keywords.filter(keyword => text.toLowerCase().includes(keyword.toLowerCase()));
+    }
+    
+    // 从行为字典中查找行为的含义
+    function findBehaviorMeaning(keyword) {
+        // 简化版：直接返回一些预定义的含义
+        // 在实际应用中，应该从behaviorPatterns字典中查找
+        const quickMeanings = {
+            'tail wagging': 'Usually indicates excitement or happiness. Fast wagging may show high excitement, while slower wagging often indicates a friendly, calm state.',
+            'ears forward': 'Shows alertness and interest. The dog is focused on something that caught their attention.',
+            'ears back': 'Often indicates submission, friendliness, or sometimes fear depending on other body language.',
+            'play bow': 'Front legs lowered with rear end up is a classic invitation to play and shows playful intentions.',
+            'lowering body': 'Can indicate submission, fear, or in some contexts preparation for play.',
+            'relaxed posture': 'Loose, soft body language indicates the dog is comfortable and at ease.',
+            'alert posture': 'Tense, upright stance with weight forward shows the dog is focused and attentive.',
+            'showing teeth': 'When combined with a wrinkled muzzle, can be a warning sign. Context matters to determine if it\'s playful or defensive.',
+            'panting': 'Can indicate excitement, stress, or simply temperature regulation.',
+            'hackles raised': 'The fur standing up along the back shows arousal, which could be excitement, fear, or alertness.',
+            'direct eye contact': 'Can be a challenge or sign of confidence depending on other body language.',
+            'avoiding eye contact': 'Often indicates submission or conflict avoidance.',
+            'body stiff': 'Tension in the body often indicates stress, alertness, or potential aggression.',
+            'relaxed mouth': 'A slightly open mouth with relaxed lips typically indicates a calm, comfortable state.'
+        };
+        
+        return quickMeanings[keyword] || null;
+    }
+} 

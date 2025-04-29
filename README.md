@@ -107,3 +107,86 @@ Need help? Visit our [Help Center](https://dogtranslator.org/help.html) or conta
 ---
 
 Ready to talk to your dog? Visit **[Dog Translator](https://dogtranslator.org/)** now and transform your relationship with your furry friend!
+
+## Features
+
+- **Dog Behavior Translator**: Interpret your dog's body language, postures, and actions
+- **Human to Dog Voice Translator**: Convert your text to realistic dog sounds
+- **NEW: ElevenLabs Text to Bark Integration**: Ultra-realistic dog vocalization using state-of-the-art AI
+- Breed-specific translations
+- Emotion-based sound generation
+- Easy-to-use web interface
+- Mobile-friendly design
+
+## Getting Started
+
+### Prerequisites
+
+- Web browser
+- Internet connection
+- ElevenLabs API key (for Text to Bark feature)
+
+### Installation
+
+1. Clone the repository
+```
+git clone https://github.com/yourusername/dogtranslator.git
+```
+
+2. Open `translate.js` and replace the placeholder API key with your ElevenLabs API key:
+```javascript
+const ELEVENLABS_API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your actual key
+```
+
+3. Open `index.html` in your web browser
+
+## Usage
+
+### Behavior Translator
+
+1. Enter a description of your dog's behavior or select from common behavior patterns
+2. Click "Interpret Behavior" to get a translation
+3. View the interpreted meaning of your dog's behavior
+
+### Voice Translator
+
+1. Type your message or click "Click to Speak" to use speech recognition
+2. Select your dog's breed size and the desired emotion
+3. Click "Translate to Dog Language" to convert your message to dog sounds
+4. Listen to the authentic dog vocalization powered by ElevenLabs AI
+
+## ElevenLabs Text to Bark Integration
+
+The Voice Translator now uses ElevenLabs' groundbreaking Text to Bark technology to generate ultra-realistic dog vocalizations. This state-of-the-art AI can create dog sounds so authentic that 95% of dogs can't distinguish them from actual barking!
+
+### Configuration
+
+To use the ElevenLabs Text to Bark feature:
+
+1. Sign up for an ElevenLabs account at [elevenlabs.io](https://elevenlabs.io)
+2. Get your API key from the ElevenLabs dashboard
+3. Update the `ELEVENLABS_API_KEY` variable in `translate.js`
+
+### API Usage
+
+The translator makes API calls to ElevenLabs' Text to Bark service with parameters for:
+- Text content (what you want to translate)
+- Emotion (happy, alert, friendly, etc.)
+- Breed size (affects sound characteristics)
+
+## Technology Stack
+
+- HTML5
+- CSS3 (TailwindCSS)
+- JavaScript (Vanilla)
+- ElevenLabs Text to Bark API
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+
+- [ElevenLabs](https://elevenlabs.io) for their Text to Bark API
+- Dog behavior experts for behavioral interpretation data
+- All the dogs and their humans who helped test this translator

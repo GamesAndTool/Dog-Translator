@@ -1,4 +1,4 @@
-// Audio files mapping
+// Audio files mapping - keeping as fallback
 const audioMap = {
     bark: new Audio('sounds/bark.wav'),
     grr: new Audio('sounds/grr.wav'),
@@ -8,8 +8,79 @@ const audioMap = {
     yip: new Audio('sounds/yip.wav')
 };
 
-// Function to play dog sound
-function playDogSound(emotion, soundType) {
+// ElevenLabs API Configuration
+const ELEVENLABS_API_KEY = 'sk_33a636126e9257af3c23904f544498b3e25bacb54fd6545e'; // Replace with your actual API key
+const ELEVENLABS_API_URL = 'https://api.elevenlabs.io/v1/text-to-bark';
+
+// Function to play dog sound using ElevenLabs API
+async function playDogSoundWithElevenLabs(text, emotion, breedSize) {
+    try {
+        // Show loading state or indicator
+        const loadingIndicator = document.createElement('div');
+        loadingIndicator.id = 'bark-loading';
+        loadingIndicator.innerHTML = `
+            <div class="text-center">
+                <p class="text-gray-600">Generating bark...</p>
+                <div class="mt-2 w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full animate-pulse" style="width: 100%"></div>
+                </div>
+            </div>
+        `;
+        document.getElementById('translation-display').appendChild(loadingIndicator);
+        
+        // Prepare request data for Text to Bark API
+        const requestData = {
+            text: text,
+            emotion: emotion,
+            breed_size: breedSize,
+            output_format: 'mp3'
+        };
+        
+        // Call the ElevenLabs API
+        const response = await fetch(ELEVENLABS_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'xi-api-key': ELEVENLABS_API_KEY
+            },
+            body: JSON.stringify(requestData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.status}`);
+        }
+        
+        // Get the audio data from the response
+        const audioBlob = await response.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        // Create and play the audio
+        const audio = new Audio(audioUrl);
+        
+        // Remove loading indicator
+        document.getElementById('bark-loading')?.remove();
+        
+        // Play audio
+        await audio.play();
+        
+        // Clean up the object URL after playing
+        audio.onended = () => {
+            URL.revokeObjectURL(audioUrl);
+        };
+        
+        return Promise.resolve();
+    } catch (error) {
+        console.error('Error with ElevenLabs API:', error);
+        document.getElementById('bark-loading')?.remove();
+        
+        // Fallback to original audio handling
+        console.log('Falling back to local audio...');
+        return playDogSoundFallback(emotion, text.split(/\s+/).length > 6 ? 'long' : 'short');
+    }
+}
+
+// Original function renamed as fallback
+function playDogSoundFallback(emotion, soundType) {
     let audio;
     
     // Select appropriate sound based on emotion and type
@@ -56,6 +127,52 @@ function playDogSound(emotion, soundType) {
             }, { once: true });
         }
     });
+}
+
+// Use the original function name to maintain compatibility
+function playDogSound(emotion, soundType) {
+    // By default, use the ElevenLabs version
+    const useElevenLabs = true; // Can be made into a user setting
+    
+    if (useElevenLabs) {
+        // Generate text based on emotion
+        let textToConvert = '';
+        switch(emotion) {
+            case 'happy':
+                textToConvert = 'I am so happy and excited!';
+                break;
+            case 'alert':
+                textToConvert = 'Warning! Something suspicious is happening!';
+                break;
+            case 'friendly':
+                textToConvert = 'Hello! I am feeling friendly and calm.';
+                break;
+            case 'playful':
+                textToConvert = 'Let\'s play together! This is fun!';
+                break;
+            case 'attention':
+                textToConvert = 'Hey! Pay attention to me please!';
+                break;
+            case 'tired':
+                textToConvert = 'I am so tired and sleepy...';
+                break;
+            case 'hungry':
+                textToConvert = 'I am hungry! Feed me please!';
+                break;
+            case 'anxious':
+                textToConvert = 'I am feeling nervous and uncomfortable...';
+                break;
+            default:
+                textToConvert = 'Hello human!';
+        }
+        
+        // Get breed size from UI
+        const breedSize = document.getElementById('breed-size-select')?.value || 'medium';
+        
+        return playDogSoundWithElevenLabs(textToConvert, emotion, breedSize);
+    } else {
+        return playDogSoundFallback(emotion, soundType);
+    }
 }
 
 // Dog sound patterns for different emotions
@@ -110,7 +227,7 @@ const breedTraits = {
 };
 
 // Translation logic
-function translateToBarks(text, emotion) {
+function translateToBarks(text, emotion, breedSize) {
     const words = text.trim().split(/\s+/);
     let translation = [];
     let visualPattern = [];
@@ -131,7 +248,7 @@ function translateToBarks(text, emotion) {
         let bark = sounds[Math.floor(Math.random() * sounds.length)];
         
         // Add sound characteristics based on breed size (default to medium)
-        bark = adjustSound(bark, 'medium');
+        bark = adjustSound(bark, breedSize);
         
         translation.push(bark);
         
