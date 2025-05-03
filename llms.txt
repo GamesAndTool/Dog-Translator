@@ -1,0 +1,16 @@
+# Dog Translator
+
+> An AI-powered platform for translating and analyzing dog behaviors, sounds, and images, helping owners better understand their pets.
+
+## Core Features
+- [Behavior Translation](https://dogtranslator.org/): Enter a description and let AI interpret your dog's behavior.
+- [Voice Translation](https://dogtranslator.org/translate.html): Convert human speech to dog sounds and vice versa.
+- [Visual Analysis](https://dogtranslator.org/visual.html): Upload a photo and let AI analyze your dog's posture and emotions.
+
+## Useful Resources
+- [FAQ](https://dogtranslator.org/#faq): Usage instructions and common questions.
+- [Features Overview](https://dogtranslator.org/#features): Main features of the platform.
+
+## Latest Updates
+- [Visual Analysis Launched](https://dogtranslator.org/visual.html): Released in April 2025.
+- [Voice Translation Improved](https://dogtranslator.org/translate.html): Updated in April 2025.

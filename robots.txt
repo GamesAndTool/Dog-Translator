@@ -26,3 +26,23 @@ Host: dogtranslator.org
 
 # Cache Control
 Cache-Control: max-age=3600
+
+User-Agent: GPTBot
+Allow: /llms.txt
+Disallow: /
+
+User-Agent: anthropic-ai
+Allow: /llms.txt
+Disallow: /
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /404
+Disallow: /500
+Disallow: /*.json$
+
+LLM-Content: https://dogtranslator.org/llms.txt
+LLM-Full-Content: https://dogtranslator.org/llms-full.txt
