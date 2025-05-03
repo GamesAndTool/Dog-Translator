@@ -50,8 +50,23 @@
 
                 <!-- Translator Interface -->
                 <div class="bg-white rounded-xl shadow-lg p-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Human Input -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 max-w-5xl mx-auto mt-8">
+                        <div class="relative" style="height: 800px; overflow: hidden;">
+                            <iframe 
+                                src="https://aged-shadow-058b.studenthc.workers.dev/bark"
+                                class="absolute w-full border-0"
+                                title="Bark Dog Translator by Toucan"
+                                loading="lazy"
+                                sandbox="allow-scripts allow-same-origin allow-forms"
+                                style="top: -80px; height: calc(100% + 80px);"
+                            ></iframe>
+                        </div>
+                        <!-- <div class="mt-4 text-center text-sm text-gray-500">
+                            <p>由 <a href="https://jointoucan.com/bark" target="_blank" class="text-blue-500 hover:underline">Jointoucan Bark</a> 提供的"汪汪文本转换器"</p>
+                        </div> -->
+                    </div>
+
+                    <!-- <div class="grid md:grid-cols-2 gap-8">
                         <div>
                             <h2 class="text-xl font-semibold mb-4">Your Message</h2>
                             <textarea 
@@ -61,7 +76,6 @@
                                 placeholder="Type your message here..."
                             ></textarea>
                             
-                            <!-- Breed Selection -->
                             <div class="mt-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Dog Breed Size:</label>
                                 <select id="breed-size-select" class="w-full p-2 border border-gray-300 rounded-lg">
@@ -71,7 +85,6 @@
                                 </select>
                             </div>
 
-                            <!-- Emotion Selection -->
                             <div class="mt-4">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Emotion:</label>
                                 <select id="emotion-select" class="w-full p-2 border border-gray-300 rounded-lg">
@@ -86,7 +99,6 @@
                                 </select>
                             </div>
 
-                            <!-- Voice Input Button -->
                             <div class="mt-4">
                                 <button 
                                     id="voice-input-button"
@@ -100,32 +112,29 @@
                             </div>
                         </div>
 
-                        <!-- Translation Output -->
                         <div>
                             <h2 class="text-xl font-semibold mb-4">Dog Sound Translation</h2>
                             <div id="translation-display" class="bg-gray-50 p-4 rounded-lg min-h-[150px] flex items-center justify-center">
                                 <p class="text-gray-500 text-center">Translation will appear here...</p>
                             </div>
                             
-                            <!-- NEW: ElevenLabs Badge -->
                             <!-- <div class="mt-3 flex items-center justify-center">
                                 <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center">
                                     <span class="mr-1">Powered by</span>
                                     <a href="https://elevenlabs.io/blog/text-to-bark" target="_blank" class="font-semibold underline hover:text-blue-600">ElevenLabs Text to Bark</a>
                                 </span>
-                            </div> -->
+                            </div> 
                         </div>
-                    </div>
+                    </div> -->
 
-                    <!-- Translation Button -->
-                    <div class="mt-8">
+                    <!-- <div class="mt-8">
                         <button 
                             id="translate-button"
                             class="w-full bg-blue-600 text-white px-6 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
                         >
                             Translate to Dog Language
                         </button>
-                    </div>
+                    </div>  -->
                 </div>
 
                 <!-- How It Works Section -->
