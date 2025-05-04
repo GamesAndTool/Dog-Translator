@@ -10,8 +10,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2312603912824705"
-     crossorigin="anonymous"></script>
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2312603912824705"
+     crossorigin="anonymous"></script> -->
      <!-- Clarity tracking code for https://dogtranslator.org/ -->
     <script>
         (function(c,l,a,r,i,t,y){
@@ -20,6 +20,81 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "rd7dvlzzc5");
     </script>
+    <!-- Custom CSS for responsive iframe handling -->
+    <style>
+        /* Extra small screens - phones */
+        @media (max-width: 375px) {
+            .iframe-container {
+                padding-bottom: 200%; /* Taller on very small screens */
+            }
+        }
+        
+        /* Small screens */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 180%; /* Taller on mobile devices for better visibility */
+            max-height: 800px;
+            overflow: hidden;
+        }
+        
+        /* Medium screens */
+        @media (min-width: 640px) {
+            .iframe-container {
+                padding-bottom: 150%;
+            }
+        }
+        
+        /* Large screens */
+        @media (min-width: 768px) {
+            .iframe-container {
+                padding-bottom: 120%;
+            }
+        }
+        
+        /* Extra large screens */
+        @media (min-width: 1024px) {
+            .iframe-container {
+                padding-bottom: 100%;
+            }
+        }
+        
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0.5rem;
+        }
+        
+        /* Loading indicator */
+        .loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .loading-indicator .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <header class="fixed top-0 w-full bg-white shadow-md z-50">
@@ -49,129 +124,134 @@
                 <p class="text-xl text-gray-600 text-center mb-12">Convert your words into authentic dog sounds</p>
 
                 <!-- Translator Interface -->
-                <div class="bg-white rounded-xl shadow-lg p-8">
-                    <div class="bg-white rounded-xl shadow-lg p-8 max-w-5xl mx-auto mt-8">
-                        <div class="relative" style="height: 800px; overflow: hidden;">
-                            <iframe 
-                                src="https://aged-shadow-058b.studenthc.workers.dev/bark"
-                                class="absolute w-full border-0"
-                                title="Bark Dog Translator by Toucan"
-                                loading="lazy"
-                                sandbox="allow-scripts allow-same-origin allow-forms"
-                                style="top: -80px; height: calc(100% + 80px);"
-                            ></iframe>
+                <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8 max-w-5xl mx-auto mt-8">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4 text-center">Text to Bark Converter</h3>
+                    <!-- Using custom CSS class -->
+                    <div class="iframe-container">
+                        <!-- Loading indicator -->
+                        <div class="loading-indicator">
+                            <div class="spinner"></div>
+                            <p>Loading...</p>
                         </div>
-                        <!-- <div class="mt-4 text-center text-sm text-gray-500">
-                            <p>由 <a href="https://jointoucan.com/bark" target="_blank" class="text-blue-500 hover:underline">Jointoucan Bark</a> 提供的"汪汪文本转换器"</p>
-                        </div> -->
+                        
+                        <iframe 
+                            src="https://aged-shadow-058b.studenthc.workers.dev/bark"
+                            title="Bark Dog Translator by Toucan"
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms"
+                            onload="this.parentNode.querySelector('.loading-indicator').style.display='none';"
+                        ></iframe>
                     </div>
-
-                    <!-- <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h2 class="text-xl font-semibold mb-4">Your Message</h2>
-                            <textarea 
-                                id="human-input"
-                                class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                                rows="4"
-                                placeholder="Type your message here..."
-                            ></textarea>
-                            
-                            <div class="mt-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Dog Breed Size:</label>
-                                <select id="breed-size-select" class="w-full p-2 border border-gray-300 rounded-lg">
-                                    <option value="small">Small (Chihuahua, Yorkshire Terrier, etc.)</option>
-                                    <option value="medium" selected>Medium (Beagle, Border Collie, etc.)</option>
-                                    <option value="large">Large (German Shepherd, Golden Retriever, etc.)</option>
-                                </select>
-                            </div>
-
-                            <div class="mt-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Emotion:</label>
-                                <select id="emotion-select" class="w-full p-2 border border-gray-300 rounded-lg">
-                                    <option value="happy">Happy/Excited</option>
-                                    <option value="friendly">Friendly/Calm</option>
-                                    <option value="alert">Alert/Warning</option>
-                                    <option value="playful">Playful</option>
-                                    <option value="attention">Attention Seeking</option>
-                                    <option value="tired">Tired/Sleepy</option>
-                                    <option value="hungry">Hungry</option>
-                                    <option value="anxious">Anxious/Nervous</option>
-                                </select>
-                            </div>
-
-                            <div class="mt-4">
-                                <button 
-                                    id="voice-input-button"
-                                    class="w-full flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors"
-                                >
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-                                    </svg>
-                                    Click to Speak
-                                </button>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h2 class="text-xl font-semibold mb-4">Dog Sound Translation</h2>
-                            <div id="translation-display" class="bg-gray-50 p-4 rounded-lg min-h-[150px] flex items-center justify-center">
-                                <p class="text-gray-500 text-center">Translation will appear here...</p>
-                            </div>
-                            
-                            <!-- <div class="mt-3 flex items-center justify-center">
-                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center">
-                                    <span class="mr-1">Powered by</span>
-                                    <a href="https://elevenlabs.io/blog/text-to-bark" target="_blank" class="font-semibold underline hover:text-blue-600">ElevenLabs Text to Bark</a>
-                                </span>
-                            </div> 
-                        </div>
+                    <!-- <div class="mt-3 text-center text-sm text-gray-500">
+                        <p>Service provided by <a href="https://jointoucan.com/bark" target="_blank" class="text-blue-500 hover:underline">Toucan Bark</a></p>
                     </div> -->
-
-                    <!-- <div class="mt-8">
-                        <button 
-                            id="translate-button"
-                            class="w-full bg-blue-600 text-white px-6 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
-                        >
-                            Translate to Dog Language
-                        </button>
-                    </div>  -->
                 </div>
 
-                <!-- How It Works Section -->
-                <div class="mt-16">
-                    <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-white p-6 rounded-xl shadow-md">
-                            <div class="text-3xl mb-4">✍️</div>
-                            <h3 class="text-xl font-bold mb-2">1. Enter Text</h3>
-                            <p class="text-gray-600">Type your message and select the emotional tone you want to convey</p>
+                <!-- <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Your Message</h2>
+                        <textarea 
+                            id="human-input"
+                            class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                            rows="4"
+                            placeholder="Type your message here..."
+                        ></textarea>
+                        
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Dog Breed Size:</label>
+                            <select id="breed-size-select" class="w-full p-2 border border-gray-300 rounded-lg">
+                                <option value="small">Small (Chihuahua, Yorkshire Terrier, etc.)</option>
+                                <option value="medium" selected>Medium (Beagle, Border Collie, etc.)</option>
+                                <option value="large">Large (German Shepherd, Golden Retriever, etc.)</option>
+                            </select>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md">
-                            <div class="text-3xl mb-4">🔄</div>
-                            <h3 class="text-xl font-bold mb-2">2. AI Translation</h3>
-                            <p class="text-gray-600">Our AI converts your message into appropriate dog vocalizations</p>
+
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Emotion:</label>
+                            <select id="emotion-select" class="w-full p-2 border border-gray-300 rounded-lg">
+                                <option value="happy">Happy/Excited</option>
+                                <option value="friendly">Friendly/Calm</option>
+                                <option value="alert">Alert/Warning</option>
+                                <option value="playful">Playful</option>
+                                <option value="attention">Attention Seeking</option>
+                                <option value="tired">Tired/Sleepy</option>
+                                <option value="hungry">Hungry</option>
+                                <option value="anxious">Anxious/Nervous</option>
+                            </select>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-md">
-                            <div class="text-3xl mb-4">🔊</div>
-                            <h3 class="text-xl font-bold mb-2">3. Play Sound</h3>
-                            <p class="text-gray-600">Listen to your message in authentic dog language</p>
+
+                        <div class="mt-4">
+                            <button 
+                                id="voice-input-button"
+                                class="w-full flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                                </svg>
+                                Click to Speak
+                            </button>
                         </div>
                     </div>
-                    
-                    <!-- NEW: ElevenLabs Text to Bark Callout -->
-                    <div class="mt-12 bg-blue-600 text-white p-6 rounded-xl shadow-md">
-                        <div class="flex flex-col items-center text-center">
-                            <div class="text-5xl mb-4">🐕</div>
-                            <h3 class="text-2xl font-bold mb-3">NEW: Ultra-Realistic Barks</h3>
-                            <p class="text-lg mb-4">
-                                We've upgraded our translator with ElevenLabs' groundbreaking Text to Bark technology. 
-                                Our AI now creates dog vocalizations so realistic that 95% of dogs can't distinguish them from actual barking!
-                            </p>
-                            <a href="https://elevenlabs.io/blog/text-to-bark" target="_blank" class="border border-white text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                Learn more about Text to Bark
-                            </a>
+
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4">Dog Sound Translation</h2>
+                        <div id="translation-display" class="bg-gray-50 p-4 rounded-lg min-h-[150px] flex items-center justify-center">
+                            <p class="text-gray-500 text-center">Translation will appear here...</p>
                         </div>
+                        
+                        <!-- <div class="mt-3 flex items-center justify-center">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded flex items-center">
+                                <span class="mr-1">Powered by</span>
+                                <a href="https://elevenlabs.io/blog/text-to-bark" target="_blank" class="font-semibold underline hover:text-blue-600">ElevenLabs Text to Bark</a>
+                            </span>
+                        </div> 
                     </div>
+                </div> -->
+
+                <!-- <div class="mt-8">
+                    <button 
+                        id="translate-button"
+                        class="w-full bg-blue-600 text-white px-6 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
+                    >
+                        Translate to Dog Language
+                    </button>
+                </div>  -->
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">✍️</div>
+                    <h3 class="text-xl font-bold mb-2">1. Enter Text</h3>
+                    <p class="text-gray-600">Type your message and select the emotional tone you want to convey</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-2">2. AI Translation</h3>
+                    <p class="text-gray-600">Our AI converts your message into appropriate dog vocalizations</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔊</div>
+                    <h3 class="text-xl font-bold mb-2">3. Play Sound</h3>
+                    <p class="text-gray-600">Listen to your message in authentic dog language</p>
+                </div>
+            </div>
+            
+            <!-- NEW: ElevenLabs Text to Bark Callout -->
+            <div class="mt-12 bg-blue-600 text-white p-6 rounded-xl shadow-md">
+                <div class="flex flex-col items-center text-center">
+                    <div class="text-5xl mb-4">🐕</div>
+                    <h3 class="text-2xl font-bold mb-3">NEW: Ultra-Realistic Barks</h3>
+                    <p class="text-lg mb-4">
+                        We've upgraded our translator with ElevenLabs' groundbreaking Text to Bark technology. 
+                        Our AI now creates dog vocalizations so realistic that 95% of dogs can't distinguish them from actual barking!
+                    </p>
+                    <a href="https://elevenlabs.io/blog/text-to-bark" target="_blank" class="border border-white text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Learn more about Text to Bark
+                    </a>
                 </div>
             </div>
         </section>
