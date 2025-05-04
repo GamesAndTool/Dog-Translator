@@ -94,9 +94,23 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Language switcher styles */
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="translate.html" class="inline-block px-3 py-1 bg-blue-600 text-white rounded mr-1 text-sm">English</a>
+        <a href="zh/translate.html" class="inline-block px-3 py-1 bg-gray-200 text-gray-700 rounded text-sm">中文</a>
+    </div>
+
     <header class="fixed top-0 w-full bg-white shadow-md z-50">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex flex-col items-center">

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狗狗图像分析 | 狗语翻译器</title>
+    <meta name="description" content="上传您狗狗的照片，让我们的AI分析其体态语言和面部表情。解码您狗狗的视觉信号来理解它们的行为和情绪。">
+    <link rel="canonical" href="https://dogtranslator.org/zh/visual.html" />
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2312603912824705"
+     crossorigin="anonymous"></script>
+     <!-- Clarity tracking code for https://dogtranslator.org/ -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "rd7dvlzzc5");
+    </script>
+    
+    <!-- 语言切换器样式 -->
+    <style>
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 语言切换器 -->
+    <div class="language-switcher">
+        <a href="../visual.html" class="inline-block px-3 py-1 bg-gray-200 text-gray-700 rounded mr-1 text-sm">English</a>
+        <a href="visual.html" class="inline-block px-3 py-1 bg-blue-600 text-white rounded text-sm">中文</a>
+    </div>
+
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex flex-col items-center">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center mb-4">
+                    <span class="mr-2">🐕</span>
+                    狗语翻译器
+                </a>
+                
+                <nav class="flex flex-wrap justify-center gap-4">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600">行为翻译</a>
+                    <a href="translate.html" class="text-gray-600 hover:text-blue-600">声音翻译</a>
+                    <a href="visual.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">图像翻译</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">功能特点</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">工作原理</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600">常见问题</a>
+                </nav>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-6">狗狗图像行为分析</h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">上传您狗狗的照片，让我们的AI分析其体态语言和情绪表达</p>
+            
+            <!-- Voice Translator Promotion -->
+            <div class="max-w-4xl mx-auto bg-indigo-50 border border-indigo-200 rounded-lg shadow-md p-6 mb-12">
+                <div class="flex items-center">
+                    <div class="text-4xl mr-4">🔊</div>
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold mb-2">另一种理解您狗狗的方式</h3>
+                        <p class="text-gray-700 mb-4">尝试我们的声音翻译器，将人类语言转换为狗狗声音，或解读您狗狗的吠叫、呜咽和咆哮。</p>
+                        <a href="translate.html" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">尝试声音翻译</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upload Interface -->
+            <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4">狗狗图像行为分析</h2>
+                <p class="text-gray-600 mb-8">上传一张清晰展示您狗狗姿势和面部表情的照片，我们的AI将分析其体态语言</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Upload Area -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">上传狗狗照片</h3>
+                        <div 
+                            id="upload-area" 
+                            class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:bg-gray-50 transition-colors"
+                        >
+                            <div id="preview-container" class="mb-4 hidden">
+                                <img id="image-preview" class="max-h-64 mx-auto rounded-lg" alt="狗狗预览" />
+                            </div>
+                            <div id="upload-prompt">
+                                <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                </svg>
+                                <p class="text-gray-500 mb-2">点击上传或拖放文件</p>
+                                <p class="text-gray-400 text-sm">支持JPG、PNG或GIF格式（最大5MB）</p>
+                            </div>
+                            <input 
+                                type="file" 
+                                id="dog-image-input" 
+                                class="hidden" 
+                                accept="image/jpeg, image/png, image/gif"
+                            />
+                        </div>
+                        <div class="mt-4">
+                            <button 
+                                id="analyze-button"
+                                disabled
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                分析行为
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results Area -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">分析结果</h3>
+                        <div id="analysis-results" class="bg-gray-50 p-4 rounded-lg min-h-[250px]">
+                            <div id="analysis-placeholder" class="flex items-center justify-center h-full">
+                                <p class="text-gray-500 text-center">上传图片并点击"分析行为"查看结果</p>
+                            </div>
+                            <div id="analysis-loading" class="hidden flex flex-col items-center justify-center h-full">
+                                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+                                <p class="text-gray-600">正在分析狗狗行为...</p>
+                            </div>
+                            <div id="analysis-content" class="hidden">
+                                <h4 class="font-semibold text-lg mb-3">您的狗狗在表达：</h4>
+                                <div id="analysis-behaviors" class="space-y-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="container mx-auto px-4 py-16 bg-gray-50">
+            <h2 class="text-3xl font-bold text-center mb-12">工作原理</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full">1</div>
+                        </div>
+                        <div class="md:w-2/3 bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="text-xl font-bold mb-2">上传照片</h3>
+                            <p class="text-gray-600">上传一张清晰展示您狗狗姿势、面部表情和整体体态的照片</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full">2</div>
+                        </div>
+                        <div class="md:w-2/3 bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="text-xl font-bold mb-2">AI分析</h3>
+                            <p class="text-gray-600">我们的AI使用计算机视觉和深度学习分析狗狗关键信号，如耳朵位置、尾巴姿势、眼神和整体体态</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full">3</div>
+                        </div>
+                        <div class="md:w-2/3 bg-white p-6 rounded-xl shadow-md">
+                            <h3 class="text-xl font-bold mb-2">获取翻译结果</h3>
+                            <p class="text-gray-600">收到关于您狗狗情绪状态、体态信号和整体沟通意图的详细分析</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section id="features" class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">功能特点</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔍</div>
+                    <h3 class="text-xl font-bold mb-2">高级视觉分析</h3>
+                    <p class="text-gray-600">识别和解读微妙的体态语言，包括耳朵位置、尾巴动作和面部表情</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-2">AI情感识别</h3>
+                    <p class="text-gray-600">准确识别开心、紧张、好奇或恐惧等情绪状态</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold mb-2">便捷性</h3>
+                    <p class="text-gray-600">直接从您的手机或电脑上传照片，随时随地理解您的狗狗</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-2">上下文分析</h3>
+                    <p class="text-gray-600">结合多种信号进行整体分析，而不是孤立地解读单个行为</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-2">详细报告</h3>
+                    <p class="text-gray-600">获取全面的分析结果，包括主要情绪、体态信号和行为解释</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-2">隐私保护</h3>
+                    <p class="text-gray-600">所有照片处理都在安全环境中进行，保护您和您宠物的隐私</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section id="faq" class="container mx-auto px-4 py-16 bg-gray-50">
+            <h2 class="text-3xl font-bold text-center mb-12">常见问题</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">视觉分析的准确率如何？</h3>
+                                <span class="transform group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">我们的AI视觉分析器在识别常见的狗狗体态语言信号方面准确率可达90%。分析结果质量取决于图像清晰度以及狗狗姿势和特征的可见程度。</p>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">什么样的照片效果最好？</h3>
+                                <span class="transform group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">能够清晰展示狗狗全身或大部分身体的照片效果最佳，特别是能够看到耳朵、尾巴和面部表情。自然光线下拍摄的清晰照片会提供最准确的分析结果。</p>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">分析结果能帮助解决行为问题吗？</h3>
+                                <span class="transform group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">分析可以帮助您更好地理解狗狗的情绪状态和沟通信号，这对解决一些行为问题很有帮助。然而，对于严重或持续的行为问题，我们建议咨询专业的兽医或动物行为专家。</p>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">我可以分析视频中的特定帧吗？</h3>
+                                <span class="transform group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p class="text-gray-600">目前我们只支持静态图像分析。如果您想分析视频中的特定时刻，建议先截取该帧作为图像，然后上传进行分析。在未来版本中，我们计划添加视频分析功能。</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-2xl font-bold flex items-center">
+                        <span class="mr-2">🐕</span>
+                        狗语翻译器
+                    </a>
+                    <p class="mt-2 text-gray-400">帮助您理解狗狗的语言</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white">行为翻译</a>
+                    <a href="translate.html" class="text-gray-300 hover:text-white">声音翻译</a>
+                    <a href="visual.html" class="text-gray-300 hover:text-white">图像翻译</a>
+                    <a href="#features" class="text-gray-300 hover:text-white">功能特点</a>
+                    <a href="#how-it-works" class="text-gray-300 hover:text-white">工作原理</a>
+                    <a href="#faq" class="text-gray-300 hover:text-white">常见问题</a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2025 狗语翻译器。保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 图片上传和预览功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('dog-image-input');
+            const previewContainer = document.getElementById('preview-container');
+            const imagePreview = document.getElementById('image-preview');
+            const uploadPrompt = document.getElementById('upload-prompt');
+            const analyzeButton = document.getElementById('analyze-button');
+            
+            const analysisPlaceholder = document.getElementById('analysis-placeholder');
+            const analysisLoading = document.getElementById('analysis-loading');
+            const analysisContent = document.getElementById('analysis-content');
+            const analysisBehaviors = document.getElementById('analysis-behaviors');
+            
+            // 上传区域点击事件
+            if (uploadArea && fileInput) {
+                uploadArea.addEventListener('click', function() {
+                    fileInput.click();
+                });
+                
+                // 拖放功能
+                uploadArea.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    uploadArea.classList.add('border-blue-400', 'bg-blue-50');
+                });
+                
+                uploadArea.addEventListener('dragleave', function() {
+                    uploadArea.classList.remove('border-blue-400', 'bg-blue-50');
+                });
+                
+                uploadArea.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    uploadArea.classList.remove('border-blue-400', 'bg-blue-50');
+                    
+                    if (e.dataTransfer.files.length) {
+                        fileInput.files = e.dataTransfer.files;
+                        handleFileSelect();
+                    }
+                });
+            }
+            
+            // 文件选择处理
+            if (fileInput) {
+                fileInput.addEventListener('change', handleFileSelect);
+            }
+            
+            function handleFileSelect() {
+                if (fileInput.files.length === 0) return;
+                
+                const file = fileInput.files[0];
+                
+                // 检查文件类型
+                if (!file.type.match('image/jpeg|image/png|image/gif')) {
+                    alert('请上传JPG、PNG或GIF格式的图片');
+                    return;
+                }
+                
+                // 检查文件大小
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('文件大小超过5MB限制');
+                    return;
+                }
+                
+                // 显示预览
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    previewContainer.classList.remove('hidden');
+                    uploadPrompt.classList.add('hidden');
+                    analyzeButton.disabled = false;
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            // 分析按钮点击事件
+            if (analyzeButton) {
+                analyzeButton.addEventListener('click', function() {
+                    // 显示加载状态
+                    analysisPlaceholder.classList.add('hidden');
+                    analysisContent.classList.add('hidden');
+                    analysisLoading.classList.remove('hidden');
+                    
+                    // 模拟分析过程
+                    setTimeout(function() {
+                        analyzeImage();
+                    }, 2000);
+                });
+            }
+            
+            // 图像分析功能
+            function analyzeImage() {
+                // 这里可以添加真实的图像分析API调用
+                // 使用模拟数据作为示例
+                
+                // 隐藏加载状态，显示结果
+                analysisLoading.classList.add('hidden');
+                analysisContent.classList.remove('hidden');
+                
+                // 生成行为分析
+                analysisBehaviors.innerHTML = '';
+                
+                // 模拟几种不同的结果
+                const dogPoses = [
+                    {
+                        emotion: '开心/兴奋',
+                        behaviors: [
+                            '尾巴快速摇摆 - 表示兴奋和喜悦',
+                            '放松的身体姿势 - 表示舒适和安全感',
+                            '嘴巴微张，舌头可能伸出 - 类似于"狗狗笑容"',
+                            '活跃的眼神，关注您 - 表示积极注意'
+                        ]
+                    },
+                    {
+                        emotion: '警觉/好奇',
+                        behaviors: [
+                            '耳朵竖起并向前 - 表示高度警觉',
+                            '头可能略微倾斜 - 表示好奇和理解的尝试',
+                            '身体前倾 - 表示兴趣和专注',
+                            '尾巴水平或稍高位置 - 表示自信和关注'
+                        ]
+                    },
+                    {
+                        emotion: '放松/舒适',
+                        behaviors: [
+                            '松弛的体态，可能躺着 - 表示完全放松',
+                            '眼睛半闭或缓慢眨眼 - 表示舒适和满足',
+                            '规律的呼吸 - 表示平静状态',
+                            '尾巴自然放置 - 无紧张或过度兴奋的迹象'
+                        ]
+                    }
+                ];
+                
+                // 随机选择一种情绪状态
+                const randomIndex = Math.floor(Math.random() * dogPoses.length);
+                const selectedPose = dogPoses[randomIndex];
+                
+                // 更新情绪标题
+                const emotionTitle = document.createElement('h5');
+                emotionTitle.className = 'font-medium text-blue-700 mb-2';
+                emotionTitle.textContent = `主要情绪状态: ${selectedPose.emotion}`;
+                analysisBehaviors.appendChild(emotionTitle);
+                
+                // 添加行为描述
+                selectedPose.behaviors.forEach(behavior => {
+                    const behaviorItem = document.createElement('div');
+                    behaviorItem.className = 'p-3 bg-white rounded-lg shadow-sm mb-2';
+                    behaviorItem.textContent = behavior;
+                    analysisBehaviors.appendChild(behaviorItem);
+                });
+                
+                // 添加解释
+                const explanation = document.createElement('div');
+                explanation.className = 'mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100';
+                explanation.innerHTML = `<p class="text-gray-700"><strong>狗狗的信息:</strong> "${getRandomTranslation(selectedPose.emotion)}"</p>`;
+                analysisBehaviors.appendChild(explanation);
+            }
+            
+            // 根据情绪状态返回相应的"翻译"
+            function getRandomTranslation(emotion) {
+                const translations = {
+                    '开心/兴奋': [
+                        '我现在非常快乐！我喜欢和你在一起，希望我们能一起玩耍！',
+                        '我太兴奋了！这是我最喜欢的活动，你能陪我继续吗？',
+                        '我现在感觉特别好！你是最棒的人类，我很高兴成为你的伙伴！'
+                    ],
+                    '警觉/好奇': [
+                        '我听到了什么有趣的东西！这是新的吗？我想了解更多。',
+                        '我不确定那是什么，但引起了我的注意。我们应该调查一下吗？',
+                        '有什么不一样的地方。我正在观察环境，确保一切安全。'
+                    ],
+                    '放松/舒适': [
+                        '我现在非常放松和满足。这是我感到安全和被爱的时刻。',
+                        '我很满足。我信任你，觉得和你在一起很舒服。',
+                        '这就是完美的时光。我感到平静、安全，并且很享受当前的环境。'
+                    ]
+                };
+                
+                const possibleTranslations = translations[emotion] || translations['放松/舒适'];
+                return possibleTranslations[Math.floor(Math.random() * possibleTranslations.length)];
+            }
+        });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8S42ZVWSEY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8S42ZVWSEY');
+    </script>
+</body>
+</html>

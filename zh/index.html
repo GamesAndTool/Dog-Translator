@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>狗语翻译器 | 狗狗行为与声音翻译工具</title>
+    <meta name="description" content="狗语翻译器：理解您狗狗的行为。使用我们的AI驱动的狗人翻译器和行为解读工具，实现狗狗和人类之间的语言互译。">
+    <link rel="canonical" href="https://dogtranslator.org/zh/" />
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="shortcut icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2312603912824705"
+     crossorigin="anonymous"></script>
+     
+    <!-- 添加语言切换器样式 -->
+    <style>
+        .language-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 语言切换器 -->
+    <div class="language-switcher">
+        <a href="../index.html" class="inline-block px-3 py-1 bg-gray-200 text-gray-700 rounded mr-1 text-sm">English</a>
+        <a href="index.html" class="inline-block px-3 py-1 bg-blue-600 text-white rounded text-sm">中文</a>
+    </div>
+
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex flex-col items-center">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors flex items-center mb-4">
+                    <span class="mr-2">🐕</span>
+                    狗语翻译器
+                </a>
+                
+                <nav class="flex flex-wrap justify-center gap-4">
+                    <a href="index.html" class="text-blue-600 font-semibold border-b-2 border-blue-600">行为翻译</a>
+                    <a href="translate.html" class="text-gray-600 hover:text-blue-600">声音翻译</a>
+                    <a href="visual.html" class="text-gray-600 hover:text-blue-600">图像翻译</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600">功能特点</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600">工作原理</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600">常见问题</a>
+                </nav>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="translator" class="container mx-auto px-4 py-16 text-center">
+            <div class="sr-only">
+                <h1 class="text-5xl md:text-6xl font-bold text-blue-600 mb-6">狗语翻译器</h1>
+                <p class="text-2xl text-gray-600 mb-8">打破您与爱犬之间的语言障碍</p>
+                <div class="max-w-3xl mx-auto text-left mb-12">
+                    <p class="text-xl text-gray-700 mb-6">通过我们的AI驱动狗语翻译器更好地理解您的毛茸茸朋友。将人类语言转换为狗狗语言，解读您狗狗的吠叫、咆哮和呜咽。通过更好的沟通与您的宠物建立更牢固的纽带。</p>
+                    <div class="flex justify-center gap-4">
+                        <button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">开始翻译</button>
+                        <button class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-colors">工作原理 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Translator Interface -->
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-5xl mx-auto">
+                <h2 class="text-2xl font-bold mb-6">狗狗行为翻译器</h2>
+                <p class="text-gray-600 mb-8">了解您的狗狗试图表达什么</p>
+                
+                <div class="max-w-2xl mx-auto">
+                    <div class="mb-6">
+                        <textarea 
+                            id="human-text" 
+                            class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                            rows="4"
+                            placeholder="描述您狗狗的行为，或从下方常见行为中选择"
+                        ></textarea>
+                    </div>
+                    
+                    <!-- Quick Select Behaviors -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-3">常见行为：</h3>
+                        
+                        <!-- 搜索框 -->
+                        <div class="mb-4">
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    id="behavior-search"
+                                    class="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    placeholder="搜索行为..."
+                                >
+                                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- 行为类别 -->
+                        <div class="space-y-4">
+                            <!-- 焦虑信号 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">焦虑信号</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            焦虑地踱步
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            过度舔舐
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            躲在家具下
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            表现黏人行为
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!-- 身体语言 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">身体语言</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            竖起毛发
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            前身姿势降低
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            身体放松
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            仰卧打滚
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            侧卧打滚
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            身体僵硬
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            伸展前腿
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            伸展颈部
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            重心前移
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!-- 舒适行为 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">舒适行为</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            休息后伸展
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            躺下时叹气
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            在阳光下睡觉
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            筑巢
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!-- 面部与头部表情 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">面部与头部表情</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            耳朵向后拉
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            耳朵向前指
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            歪头
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            舔嘴唇
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            反复打哈欠
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            露出眼白
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            皱鼻子
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!-- 守卫行为 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">守卫行为</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            站在门口
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            固定位置警戒
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            对陌生人吠叫
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            保护食物或玩具
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!-- 尾巴行为 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">尾巴行为</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            尾巴上举
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            尾巴下垂
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            尾巴摇动
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            尾巴紧贴身体
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            尾巴僵直
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+
+                            <!-- 玩耍行为 -->
+                            <details class="bg-white rounded-lg shadow-sm">
+                                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                                    <h4 class="text-lg font-medium">玩耍行为</h4>
+                                    <span class="transform transition-transform">▼</span>
+                                </summary>
+                                <div class="p-4 pt-2">
+                                    <div class="flex flex-wrap gap-2">
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            做出邀请玩耍姿势
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            追逐玩具
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            带玩具到身边
+                                        </button>
+                                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                                            轻咬但不伤人
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    
+                    <button 
+                        id="translate-button"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors mb-6"
+                    >
+                        解读行为
+                    </button>
+                    
+                    <!-- Visual Translator Entrance -->
+                    <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md p-3 mb-6">
+                        <div class="flex items-center">
+                            <div class="text-3xl mr-3">👁️</div>
+                            <div class="flex-1">
+                                <h3 class="font-bold text-lg">照片分析</h3>
+                                <p class="text-sm mb-2">直接上传狗狗照片，AI自动分析体态语言</p>
+                                <a href="visual.html" class="inline-block bg-white text-blue-600 px-3 py-1 rounded text-sm font-semibold hover:bg-gray-100 transition-colors">立即使用</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="translation-result" class="hidden">
+                        <div class="p-4 bg-gray-50 rounded-lg mb-4">
+                            <h3 class="font-semibold mb-2">您的狗狗可能在说：</h3>
+                            <p id="translated-text" class="text-lg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Understanding Dog Communication Section -->
+        <section class="container mx-auto px-4 py-16 bg-gray-50">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">理解狗狗的语言</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">探索狗狗沟通背后的科学，了解如何更好地理解您毛茸茸朋友的需求、情绪和行为。</p>
+                </div>
+                
+                <!-- Communication Types Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Body Language -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">👥</div>
+                        <h3 class="text-2xl font-bold mb-4">身体语言</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">尾巴信号</h4>
+                                <p class="text-gray-600">位置和摆动模式表明情绪状态和意图</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">耳朵位置</h4>
+                                <p class="text-gray-600">反映警觉性、顺从或情绪反应</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">身体姿势</h4>
+                                <p class="text-gray-600">展示自信、恐惧、玩耍或顺从</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">面部表情</h4>
+                                <p class="text-gray-600">传达情绪状态和社交意图</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vocal Signals -->
+                    <div class="bg-white p-8 rounded-xl shadow-md">
+                        <div class="text-3xl mb-4">🔊</div>
+                        <h3 class="text-2xl font-bold mb-4">声音信号</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">吠叫类型</h4>
+                                <p class="text-gray-600">不同场合的音调和模式各不相同</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">呜咽和抽泣</h4>
+                                <p class="text-gray-600">表达需求、压力或寻求注意</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">咆哮</h4>
+                                <p class="text-gray-600">根据语境可能是玩耍或警告</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">嚎叫</h4>
+                                <p class="text-gray-600">远距离沟通和群体团结</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 更多内容... -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">主要功能</h2>
+            
+            <!-- Feature Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔍</div>
+                    <h3 class="text-xl font-bold mb-2">多种行为解析</h3>
+                    <p class="text-gray-600">分析狗狗的体态、叫声和面部表情，提供全面的行为解读</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-2">AI驱动</h3>
+                    <p class="text-gray-600">采用先进的人工智能技术，不断学习和改进翻译准确度</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-3xl mb-4">🔊</div>
+                    <h3 class="text-xl font-bold mb-2">声音分析</h3>
+                    <p class="text-gray-600">解读不同类型的吠叫、呜咽和咆哮，揭示潜在情绪</p>
+                </div>
+                
+                <!-- 更多功能... -->
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="container mx-auto px-4 py-16 bg-gray-50">
+            <h2 class="text-3xl font-bold text-center mb-12">工作原理</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full">1</div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-bold mb-2">描述或选择行为</h3>
+                            <p class="text-gray-600">输入您观察到的狗狗行为，或从我们提供的常见行为列表中选择</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full">2</div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-bold mb-2">AI分析</h3>
+                            <p class="text-gray-600">我们的AI分析行为模式，考虑上下文和情境因素</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 text-center mb-6 md:mb-0">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full">3</div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="text-xl font-bold mb-2">获取翻译结果</h3>
+                            <p class="text-gray-600">收到详细解释，了解您的狗狗可能在试图表达什么</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="container mx-auto px-4 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">常见问题</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">狗语翻译器的准确度如何？</h3>
+                                <span class="transform group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p>我们的翻译器基于大量的犬类行为研究和机器学习模型，准确度在大多数情况下达到95%以上。随着更多用户提供反馈，我们的AI系统会持续学习和改进。</p>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <!-- Question 2 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <details class="group">
+                            <summary class="flex justify-between items-center p-6 cursor-pointer">
+                                <h3 class="text-lg font-semibold">这款工具支持哪些犬种？</h3>
+                                <span class="transform group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="p-6 pt-0">
+                                <p>我们的翻译器支持所有犬种！虽然不同犬种可能有一些特定的沟通特点，但基本的狗狗行为语言在所有犬种中都有共同之处。我们的系统会考虑到品种差异。</p>
+                            </div>
+                        </details>
+                    </div>
+                    
+                    <!-- 更多问题... -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <p class="text-center text-gray-600">© 2023 狗语翻译器 | 所有权利保留</p>
+        </div>
+    </footer>
+    
+    <!-- 添加必要的脚本引用，确保与英文版功能一致 -->
+    <script src="../script.js"></script>
+    
+    <script>
+        // 行为翻译功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 绑定行为选项点击事件
+            const behaviorOptions = document.querySelectorAll('.behavior-option');
+            const humanTextArea = document.getElementById('human-text');
+            const translateButton = document.getElementById('translate-button');
+            const translationResult = document.getElementById('translation-result');
+            const translatedText = document.getElementById('translated-text');
+            
+            behaviorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    humanTextArea.value = this.textContent.trim();
+                });
+            });
+            
+            // 搜索功能
+            const searchInput = document.getElementById('behavior-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    
+                    behaviorOptions.forEach(option => {
+                        const text = option.textContent.trim().toLowerCase();
+                        if (text.includes(searchTerm)) {
+                            option.style.display = '';
+                        } else {
+                            option.style.display = 'none';
+                        }
+                    });
+                });
+            }
+            
+            // 翻译按钮功能
+            if (translateButton) {
+                translateButton.addEventListener('click', function() {
+                    if (humanTextArea.value.trim() === '') {
+                        alert('请描述狗狗行为或从列表中选择一项');
+                        return;
+                    }
+                    
+                    // 模拟加载过程
+                    translateButton.disabled = true;
+                    translateButton.textContent = '分析中...';
+                    
+                    setTimeout(() => {
+                        translateDogBehavior(humanTextArea.value);
+                        translateButton.disabled = false;
+                        translateButton.textContent = '解读行为';
+                    }, 1500);
+                });
+            }
+            
+            function translateDogBehavior(behavior) {
+                // 这里可以添加实际的翻译逻辑
+                // 为演示目的，使用预设的回应
+                translationResult.classList.remove('hidden');
+                
+                // 基于输入行为的简单匹配
+                if (behavior.includes('焦虑') || behavior.includes('踱步') || behavior.includes('舔舐')) {
+                    translatedText.textContent = "我感到紧张和不安。我需要一些安慰和安全感。请帮助我平静下来。";
+                } 
+                else if (behavior.includes('摇尾巴') || behavior.includes('放松') || behavior.includes('松弛')) {
+                    translatedText.textContent = "我很开心！我喜欢现在的情况，感到放松和舒适。";
+                }
+                else if (behavior.includes('耳朵')) {
+                    if (behavior.includes('向后') || behavior.includes('拉')) {
+                        translatedText.textContent = "我可能感到害怕或紧张。我在试图表现出顺从，避免冲突。";
+                    } else if (behavior.includes('向前') || behavior.includes('指')) {
+                        translatedText.textContent = "我听到了一些有趣的事情！我很警觉，集中注意力在特定声音上。";
+                    }
+                }
+                else if (behavior.includes('歪头')) {
+                    translatedText.textContent = "我在试图更好地理解你在说什么。我对你说的话或你的动作感到好奇。";
+                }
+                else {
+                    translatedText.textContent = "我在通过身体语言与你交流。注意我的整体姿势、尾巴位置和面部表情，这些都是我情绪状态的线索。";
+                }
+                
+                // 滚动到结果部分
+                translationResult.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8S42ZVWSEY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8S42ZVWSEY');
+    </script>
+
+    <!-- 添加缺失的面部与头部表情部分 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 查找"更多行为类别..."的注释并替换为完整的类别内容
+        let behaviorCategories = document.querySelector('.space-y-4');
+        if (behaviorCategories) {
+            // 添加尾巴类别
+            let tailBehaviorsDetails = document.createElement('details');
+            tailBehaviorsDetails.className = 'bg-white rounded-lg shadow-sm';
+            tailBehaviorsDetails.innerHTML = `
+                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                    <h4 class="text-lg font-medium">尾巴行为</h4>
+                    <span class="transform transition-transform">▼</span>
+                </summary>
+                <div class="p-4 pt-2">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            尾巴上举
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            尾巴下垂
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            尾巴摇动
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            尾巴紧贴身体
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            尾巴僵直
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // 添加玩耍行为类别
+            let playBehaviorsDetails = document.createElement('details');
+            playBehaviorsDetails.className = 'bg-white rounded-lg shadow-sm';
+            playBehaviorsDetails.innerHTML = `
+                <summary class="flex justify-between items-center p-4 cursor-pointer">
+                    <h4 class="text-lg font-medium">玩耍行为</h4>
+                    <span class="transform transition-transform">▼</span>
+                </summary>
+                <div class="p-4 pt-2">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            做出邀请玩耍姿势
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            追逐玩具
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            带玩具到身边
+                        </button>
+                        <button class="behavior-option px-3 py-2 text-sm bg-gray-100 hover:bg-blue-50 rounded-lg transition-colors">
+                            轻咬但不伤人
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // 添加新创建的类别到行为类别容器中
+            behaviorCategories.appendChild(tailBehaviorsDetails);
+            behaviorCategories.appendChild(playBehaviorsDetails);
+        }
+    });
+    </script>
+</body>
+</html> 
