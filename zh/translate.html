@@ -300,6 +300,41 @@
 
     <script src="../translate.js"></script>
 
+    <!-- 添加禁用右键点击功能 -->
+    <script>
+        // 禁用右键点击
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            // alert('抱歉，为了保护内容，右键功能已被禁用！');
+            return false;
+        });
+        
+        // 禁用复制功能
+        // document.addEventListener('copy', function(e) {
+        //     e.preventDefault();
+        //     alert('抱歉，为了保护内容，复制功能已被禁用！');
+        //     return false;
+        // });
+        
+        // 禁用F12开发者工具 (部分浏览器可能无效)
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123) { // F12键
+                e.preventDefault();
+                return false;
+            }
+            // 禁用Ctrl+Shift+I (开发者工具)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+                return false;
+            }
+            // 禁用Ctrl+U (查看源代码)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8S42ZVWSEY"></script>
     <script>

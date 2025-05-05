@@ -320,5 +320,47 @@
 
         gtag('config', 'G-8S42ZVWSEY');
     </script>
+
+    <!-- Disable right-click -->
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            // alert('Sorry, right-click is disabled to protect our content!');
+            return false;
+        });
+        
+        // Disable copy function
+        // document.addEventListener('copy', function(e) {
+        //     e.preventDefault();
+        //     alert('Sorry, copy function is disabled to protect our content!');
+        //     return false;
+        // });
+        
+        // Disable F12 dev tools (may not work in all browsers)
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123) { // F12 key
+                e.preventDefault();
+                return false;
+            }
+            // Disable Ctrl+Shift+I (dev tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Disable Ctrl+U (view source)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+    
+    <!-- Visual analyzer script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+// ... existing code ...
+        });
+    </script>
 </body>
 </html>

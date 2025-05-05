@@ -474,6 +474,41 @@
     <script src="translate.js"></script>
     <script src="script.js"></script>
 
+    <!-- Disable right-click -->
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            // alert('Sorry, right-click is disabled to protect our content!');
+            return false;
+        });
+        
+        // Disable copy function
+        // document.addEventListener('copy', function(e) {
+        //     e.preventDefault();
+        //     alert('Sorry, copy function is disabled to protect our content!');
+        //     return false;
+        // });
+        
+        // Disable F12 dev tools (may not work in all browsers)
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode == 123) { // F12 key
+                e.preventDefault();
+                return false;
+            }
+            // Disable Ctrl+Shift+I (dev tools)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Disable Ctrl+U (view source)
+            if (e.ctrlKey && e.keyCode == 85) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8S42ZVWSEY"></script>
     <script>
